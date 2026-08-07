@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="256" viewBox="0 0 1060 256" role="img">
+<rect width="1060" height="256" fill="#ffffff"/>
+<text x="0" y="21" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#818b98" text-anchor="start">LANGUAGES</text>
+<rect x="150" y="4" width="92" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="196" y="21.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">TypeScript</text>
+<rect x="250" y="4" width="92" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="296" y="21.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">JavaScript</text>
+<rect x="350" y="4" width="50" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="375" y="21.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">PHP</text>
+<rect x="408" y="4" width="67" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="441.5" y="21.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Python</text>
+<rect x="483" y="4" width="54" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="510" y="21.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Java</text>
+<rect x="545" y="4" width="69" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="579.5" y="21.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">C / C++</text>
+<text x="0" y="65" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#818b98" text-anchor="start">BACKEND</text>
+<rect x="150" y="48" width="71" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="185.5" y="65.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Node.js</text>
+<rect x="229" y="48" width="74" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="266" y="65.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Express</text>
+<rect x="311" y="48" width="71" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="346.5" y="65.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Fastify</text>
+<rect x="390" y="48" width="54" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="417" y="65.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Hono</text>
+<rect x="452" y="48" width="71" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="487.5" y="65.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Next.js</text>
+<text x="0" y="109" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#818b98" text-anchor="start">DATA</text>
+<rect x="150" y="92" width="101" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="200.5" y="109.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">PostgreSQL</text>
+<rect x="259" y="92" width="80" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="299" y="109.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">MongoDB</text>
+<rect x="347" y="92" width="68" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="381" y="109.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Prisma</text>
+<rect x="423" y="92" width="81" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="463.5" y="109.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Sequelize</text>
+<rect x="512" y="92" width="83" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="553.5" y="109.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Mongoose</text>
+<text x="0" y="153" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#818b98" text-anchor="start">MESSAGING</text>
+<rect x="150" y="136" width="86" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="193" y="153.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">RabbitMQ</text>
+<rect x="244" y="136" width="64" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="276" y="153.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">AMQP</text>
+<rect x="316" y="136" width="141" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="386.5" y="153.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Event-driven design</text>
+<rect x="465" y="136" width="137" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="533.5" y="153.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Dead-letter queues</text>
+<text x="0" y="197" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#818b98" text-anchor="start">PLATFORMS</text>
+<rect x="150" y="180" width="67" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="183.5" y="197.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Moodle</text>
+<rect x="225" y="180" width="67" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="258.5" y="197.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Docker</text>
+<rect x="300" y="180" width="114" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="357" y="197.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">GitHub Actions</text>
+<rect x="422" y="180" width="54" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="449" y="197.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Jest</text>
+<rect x="484" y="180" width="117" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="542.5" y="197.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Testcontainers</text>
+<text x="0" y="241" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#818b98" text-anchor="start">SECURITY</text>
+<rect x="150" y="224" width="62" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="181" y="241.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">OSINT</text>
+<rect x="220" y="224" width="138" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="289" y="241.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">Threat intelligence</text>
+<rect x="366" y="224" width="120" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="426" y="241.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">MITRE ATT&amp;CK</text>
+<rect x="494" y="224" width="67" height="26" rx="6" fill="rgba(9,105,218,0.10)" stroke="#d0d7de" stroke-width="1"/>
+<text x="527.5" y="241.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="500" fill="#1f2328" text-anchor="middle">OPSEC</text>
+</svg>

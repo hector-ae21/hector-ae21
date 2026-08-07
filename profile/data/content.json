@@ -1,0 +1,223 @@
+{
+  "$comment": "Every word and every editorial choice on the profile lives here. README.md and profile/pages/*.md are generated from this file plus the GitHub API — never edit them by hand. Run: node scripts/generate-profile.mjs",
+
+  "user": {
+    "login": "hector-ae21",
+    "name": "Hector Arrechea",
+    "role": "Backend engineer · event-driven systems",
+    "location": "Santander, Spain",
+    "linkedin": "https://www.linkedin.com/in/hector-arrechea/",
+    "npm": "https://www.npmjs.com/~hector21",
+    "orcid": "https://orcid.org/0009-0008-0090-3927"
+  },
+
+  "nav": {
+    "$comment": "The link bar under the banner. `to` is a page id from `groups`, `href` an absolute URL. Second row leaves the profile.",
+    "sections": [
+      { "label": "Packages", "to": "packages" },
+      { "label": "Moodle", "to": "moodle" },
+      { "label": "Stack", "to": "stack" }
+    ],
+    "elsewhere": [
+      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/hector-arrechea/" },
+      { "label": "ORCID", "href": "https://orcid.org/0009-0008-0090-3927" },
+      { "label": "npm", "href": "https://www.npmjs.com/~hector21" },
+      { "label": "Didactika", "href": "https://github.com/didactika" },
+      { "label": "ResilientMQ", "href": "https://github.com/resilientmq" }
+    ]
+  },
+
+  "banner": {
+    "$comment": "The strip at the top. No name and no job title on purpose: GitHub already prints both in the sidebar right next to it, so putting them in the one image everybody sees first would spend it on a repeat. It shows the ground I actually cover instead — one chip per facet, in whatever order reads best. Add or remove a facet and the banner redraws around it. `glyph` has to be one of the drawings in GLYPHS inside the generator.",
+    "facets": [
+      { "glyph": "braces", "label": "backend" },
+      { "glyph": "package", "label": "packages" },
+      { "glyph": "database", "label": "data" },
+      { "glyph": "shield", "label": "security" },
+      { "glyph": "cap", "label": "moodle" },
+      { "glyph": "flask", "label": "research" }
+    ]
+  },
+
+  "quickAccess": {
+    "$comment": "The launcher rows under the nav. Fifteen slots at most: up to `maxPinned` chosen here by hand, and `recentCount` filled automatically with whatever was pushed to most recently — that half is the only part of this profile that reorders itself. Rows are unlabelled on purpose; a rule between them is enough separation and a heading over four links is more furniture than content. A private entry needs `private: true` and its own `label`, since the token this runs under cannot read the repository to find one.",
+    "maxPinned": 10,
+    "recentCount": 5,
+    "rows": [
+      { "id": "university" },
+      { "id": "personal" },
+      { "id": "orgs" }
+    ],
+    "pinned": [
+      { "repo": "hector-ae21/CIBINT", "label": "CIBINT", "row": "university", "private": true },
+      { "repo": "mmasias/TDHector", "label": "TDHector", "row": "personal", "private": true },
+      { "repo": "hector-ae21/http-response-client", "row": "personal" },
+      { "repo": "hector-ae21/moodle-local_digitalta", "label": "digitalta-plugin", "row": "personal" },
+      { "repo": "hector-ae21/moodle-theme_digitalta", "label": "digitalta-theme", "row": "personal" },
+      { "repo": "hector-ae21/Cache-Db", "row": "personal" }
+    ],
+    "exclude": ["didactika/.github"],
+    "$exclude": "didactika/.github is the organisation's own profile page and regenerates itself on a schedule, so it would win 'most recently pushed' every single day without anybody having worked on it."
+  },
+
+  "about": {
+    "heading": "About",
+    "body": [
+      "Computer engineer with five years building software. Degree at Universidad Europea del Atlántico, master's in cybersecurity at UNIR.",
+      "Most of what I know came from things that did not work the first time, so I have stopped avoiding them. I am at my best where an idea can be tried rather than argued about, and I would rather learn a job by doing it than by reading about it.",
+      "I like working with other people and I will take the lead when a project needs someone to. I also think there is a life outside this — the aim is for the two to fit together, and when they collide I finish what I owe first."
+    ],
+    "quote": "A service that answers every request and gets none of them right is still down. It just hasn't noticed yet."
+  },
+
+  "groups": [
+    {
+      "id": "packages",
+      "label": "Packages",
+      "blurb": "TypeScript libraries for Node.js backends — messaging, HTTP and data access.",
+      "page": "Libraries I publish and maintain on npm. Each one came out of a real service that needed it twice."
+    },
+    {
+      "id": "moodle",
+      "label": "Moodle",
+      "blurb": "Plugins and clients that extend Moodle for integration-heavy campuses.",
+      "page": "Moodle work — local plugins, themes and the web-service client that ties external systems into a campus."
+    }
+  ],
+
+  "projects": [
+    {
+      "name": "@resilientmq/core",
+      "repo": "resilientmq/core",
+      "group": "packages",
+      "role": "Author",
+      "npm": "@resilientmq/core",
+      "featured": true,
+      "short": "Resilient event processing for RabbitMQ: retry policy, dead-letter routing and per-event state, so a redelivery is never processed twice.",
+      "desc": "Resilient event processing for RabbitMQ. Declares which events a consumer handles, then takes care of everything that can go wrong around them: retry policy, dead-letter routing, per-event state so a redelivery is not reprocessed, and a controlled way to mark an event as deliberately ignored rather than failed.",
+      "tech": ["TypeScript", "RabbitMQ", "amqplib", "Testcontainers"]
+    },
+    {
+      "name": "@didactika/prisma-autoread",
+      "repo": "didactika/prisma-autoread",
+      "group": "packages",
+      "role": "Lead contributor",
+      "npm": "@didactika/prisma-autoread",
+      "featured": true,
+      "short": "One declaration turns a Prisma model into a search endpoint: filters, sorting, includes, aggregations, cursor and offset paging.",
+      "desc": "Drop-in search endpoints for Express and Prisma. One declaration yields filtering, sorting, field selection, relation includes, aggregations and both offset and cursor pagination — over GET, the new QUERY method or POST — emitting HAL, JSON:API or CSV.",
+      "tech": ["TypeScript", "Prisma", "Express", "Fastify", "Hono"]
+    },
+    {
+      "name": "http-response-client",
+      "repo": "hector-ae21/http-response-client",
+      "group": "packages",
+      "role": "Author",
+      "npm": "http-response-client",
+      "featured": true,
+      "short": "One response shape for a whole Express service. Typed HTTP errors and middleware that returns a body instead of a stack trace.",
+      "desc": "One shape for every response an Express service returns, success or failure. Typed constructors for the standard HTTP errors, custom errors on the same contract, and middleware that turns a thrown error into a well-formed body instead of a stack trace.",
+      "tech": ["TypeScript", "Express"]
+    },
+    {
+      "name": "moodle-web-service-client",
+      "repo": "didactika/moodle-client",
+      "group": "moodle",
+      "role": "Author",
+      "npm": "moodle-web-service-client",
+      "featured": true,
+      "short": "Typed client for the Moodle web-service API. Deals with its flattened parameters and its habit of returning errors with a 200.",
+      "desc": "Typed Node.js client for the Moodle web-service API. Handles Moodle's flattened parameter encoding and its habit of returning errors with a 200, so callers get a rejected promise instead of a body they have to inspect.",
+      "tech": ["TypeScript", "Moodle"]
+    },
+    {
+      "name": "@resilientmq/mongoose-connector",
+      "repo": "resilientmq/mongoose-connector",
+      "group": "packages",
+      "role": "Author",
+      "npm": "@resilientmq/mongoose-connector",
+      "short": "MongoDB storage for ResilientMQ. Keeps event state across restarts so redeliveries stay idempotent.",
+      "desc": "MongoDB storage backend for ResilientMQ. Persists event state through Mongoose so consumer restarts and redeliveries stay idempotent.",
+      "tech": ["TypeScript", "Mongoose", "MongoDB"]
+    },
+    {
+      "name": "moodle-local_digitalta",
+      "repo": "hector-ae21/moodle-local_digitalta",
+      "group": "moodle",
+      "role": "Contributor",
+      "short": "Local plugin behind DigitalTA on Moodle 4.1: the data model, the pages and the services.",
+      "desc": "Local plugin behind DigitalTA on Moodle 4.1 — the data model, pages and services for the platform's teaching-assistant workflow.",
+      "tech": ["PHP", "Moodle 4.1"]
+    },
+    {
+      "name": "moodle-theme_digitalta",
+      "repo": "hector-ae21/moodle-theme_digitalta",
+      "group": "moodle",
+      "role": "Contributor",
+      "short": "The theme that goes with it: layouts, SCSS and Mustache templates rather than a reskinned Boost.",
+      "desc": "Companion theme for DigitalTA: layouts, SCSS and Mustache templates that give the plugin its own interface rather than a skinned Boost.",
+      "tech": ["JavaScript", "SCSS", "Mustache"]
+    }
+  ],
+
+  "stack": {
+    "$comment": "Grouped into one rendered image. Keep each row to what the repositories actually evidence.",
+    "heading": "Stack",
+    "groups": [
+      { "label": "Languages", "items": ["TypeScript", "JavaScript", "PHP", "Python", "Java", "C / C++"] },
+      { "label": "Backend", "items": ["Node.js", "Express", "Fastify", "Hono", "Next.js"] },
+      { "label": "Data", "items": ["PostgreSQL", "MongoDB", "Prisma", "Sequelize", "Mongoose"] },
+      { "label": "Messaging", "items": ["RabbitMQ", "AMQP", "Event-driven design", "Dead-letter queues"] },
+      { "label": "Platforms", "items": ["Moodle", "Docker", "GitHub Actions", "Jest", "Testcontainers"] },
+      { "label": "Security", "items": ["OSINT", "Threat intelligence", "MITRE ATT&CK", "OPSEC"] }
+    ]
+  },
+
+  "copy": {
+    "featured": {
+      "heading": "Work worth pointing at",
+      "more": "Everything else"
+    },
+    "portfolio": {
+      "viewAll": "Browse",
+      "back": "Back to profile",
+      "publicCount": "public"
+    },
+    "metrics": {
+      "heading": "Code and commits",
+      "note": "Every figure here counts <b>my own</b> commits, never a repository's totals, across the public repositories I own and the ones I contribute to. Recomputed daily by a job in this repository — no third-party service involved.",
+      "languages": "Code by language",
+      "peryear": "My commits by year",
+      "perrepo": "My commits by repository",
+      "perowner": "My commits by owner",
+      "activity": "My weekly commits, last 52 weeks"
+    },
+    "footer": "Built to be rebuilt: this page regenerates itself."
+  },
+
+  "tracked": {
+    "$comment": "Public repositories that feed the charts. `owned` is discovered from the API; list here the ones I contribute to but do not own. Private repositories are deliberately absent — the Actions token cannot read them, and a chart that silently drops half the data is worse than a smaller honest one.",
+    "contributions": [
+      "resilientmq/core",
+      "resilientmq/mongoose-connector",
+      "resilientmq/types__core",
+      "resilientmq/types__mongoose-connector",
+      "didactika/moodle-client",
+      "didactika/prisma-autoread",
+      "didactika/.github"
+    ],
+    "excludeOwned": [
+      "hector-ae21",
+      "entrega2-svelte",
+      "entrega2-vue",
+      "Progra-Web-II",
+      "The-Cat-World",
+      "IdSw1-22-23",
+      "IdSw2-22-23",
+      "Programacion-I",
+      "Hal-Ts",
+      "moodle-mod_scheduler"
+    ],
+    "$excluded": "Hal-Ts and moodle-mod_scheduler are excluded because the API attributes zero commits here to this account: Hal-Ts is Nicolás Calvache's package (NullTrisp/Hal-Ts, published by `trisp`) and moodle-mod_scheduler is a fork of Henning Bostelmann's plugin. Counting either in a 'Repositories' tile would be a claim the same API contradicts."
+  }
+}

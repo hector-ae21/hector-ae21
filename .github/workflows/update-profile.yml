@@ -1,0 +1,55 @@
+name: Update profile
+
+# Regenerates README.md, the detail pages and the charts from live GitHub data.
+# A profile README cannot run JavaScript, so "dynamic" means this job recomputes
+# the numbers on a schedule and commits the result.
+
+on:
+  schedule:
+    - cron: "23 5 * * *" # daily at 05:23 UTC
+  workflow_dispatch: # manual run from the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - "scripts/generate-profile.mjs"
+      - "profile/data/content.json"
+      - ".github/workflows/update-profile.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-profile
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate profile
+        env:
+          # The default token reads public repositories, which is all the
+          # generator asks for: nothing private reaches the page, so nothing
+          # private is ever queried. Swapping in a PAT would not help — the
+          # point is that a reader can check every figure here against the same
+          # API, and they cannot check what they cannot open.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/generate-profile.mjs
+
+      - name: Commit if anything changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- README.md profile; then
+            echo "Profile already up to date."
+            exit 0
+          fi
+          git add README.md profile
+          git commit -m "chore(profile): refresh stats [skip ci]"
+          git push
