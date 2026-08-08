@@ -12,18 +12,11 @@
   },
 
   "nav": {
-    "$comment": "The link bar under the banner. `to` is a page id from `groups`, `href` an absolute URL. Second row leaves the profile.",
+    "$comment": "The one centred row under the banner: where you can go inside this profile. `to` is a page id from `groups`. There is no second row of outward links — LinkedIn, ORCID and npm are in the footer, which is where somebody looks when they have finished reading rather than before they have started.",
     "sections": [
       { "label": "Packages", "to": "packages" },
       { "label": "Moodle", "to": "moodle" },
       { "label": "Stack", "to": "stack" }
-    ],
-    "elsewhere": [
-      { "label": "LinkedIn", "href": "https://www.linkedin.com/in/hector-arrechea/" },
-      { "label": "ORCID", "href": "https://orcid.org/0009-0008-0090-3927" },
-      { "label": "npm", "href": "https://www.npmjs.com/~hector21" },
-      { "label": "Didactika", "href": "https://github.com/didactika" },
-      { "label": "ResilientMQ", "href": "https://github.com/resilientmq" }
     ]
   },
 

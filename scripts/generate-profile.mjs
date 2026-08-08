@@ -784,14 +784,11 @@ function linkTable(content, data, login, banner) {
   if (lost.length) warn(`quickAccess row missing for: ${lost.map((i) => `${i.repo} (${i.row})`).join(", ")}`);
 
   // Where you can go from here, and what is mine. Two different things, so they
-  // are punctuated differently: a middot for navigation, a slash for
-  // repositories, the way a path is written. The two navigation rows share one
-  // cell — they are the same kind of link and a border between them would say
-  // they are not.
-  const nav = [
-    content.nav.sections.map((s) => `<a href="${PAGE(login, s.to)}">${esc(s.label)}</a>`).join(" · "),
-    content.nav.elsewhere.map((e) => `<a href="${e.href}">${esc(e.label)}</a>`).join(" · "),
-  ].filter(Boolean).join("<br>");
+  // are set differently: navigation centred and joined by a middot, repositories
+  // ranged right and joined by a slash, the way a path is written. Nobody has to
+  // be told which is which.
+  const nav = content.nav.sections
+    .map((s) => `<a href="${PAGE(login, s.to)}">${esc(s.label)}</a>`).join(" · ");
 
   const repos = (q.rows || []).map((row) => items.filter((i) => i.row === row.id).map((i) => {
     const name = i.recent ? `<em>${esc(i.label)}</em>` : esc(i.label);
@@ -802,11 +799,11 @@ function linkTable(content, data, login, banner) {
 
   // Everything set small. This is the index, not the page: it should be legible
   // and stay out of the way of the first thing anyone actually reads.
-  const cell = (html) => `<tr><td align="right"><sub>${html}</sub></td></tr>`;
+  const cell = (html, align) => `<tr><td align="${align}"><sub>${html}</sub></td></tr>`;
 
   return `<table width="100%">
 <tr><td>${banner}</td></tr>
-${[nav, ...repos].filter(Boolean).map(cell).join("\n")}
+${[nav && cell(nav, "center"), ...repos.map((r) => cell(r, "right"))].filter(Boolean).join("\n")}
 </table>`;
 }
 
