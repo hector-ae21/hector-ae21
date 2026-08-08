@@ -16,11 +16,6 @@
 <tr><td align="right"><sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="10"></picture> <a href="https://github.com/mmasias/TDHector">TDHector</a> / <a href="https://github.com/hector-ae21/http-response-client">http-response-client</a> / <a href="https://github.com/hector-ae21/moodle-local_digitalta">digitalta-plugin</a> / <a href="https://github.com/hector-ae21/moodle-theme_digitalta">digitalta-theme</a> / <a href="https://github.com/hector-ae21/Cache-Db">Cache-Db</a></sub></td></tr>
 </table>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/stats-dark.svg">
-  <img alt="Profile statistics" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/stats-light.svg" width="100%">
-</picture>
-
 ## About
 
 - Computer engineer, five years building software. Degree at Universidad Europea del Atlántico, master's in cybersecurity at UNIR.
@@ -29,7 +24,10 @@
 
 ## Code and commits
 
-<sub>Every figure here counts <b>my own</b> commits, never a repository's totals, across the public repositories I own and the ones I contribute to. Recomputed daily by a job in this repository — no third-party service involved.</sub>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/stats-dark.svg">
+  <img alt="Profile statistics" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/stats-light.svg" width="100%">
+</picture>
 
 <p>
 <picture>
@@ -37,19 +35,8 @@
   <img alt="Code by language" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/languages-light.svg" width="48%">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/peryear-dark.svg">
-  <img alt="My commits by year" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/peryear-light.svg" width="48%">
-</picture>
-</p>
-
-<p>
-<picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/perrepo-dark.svg">
   <img alt="My commits by repository" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/perrepo-light.svg" width="48%">
-</picture>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/perowner-dark.svg">
-  <img alt="My commits by owner" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/perowner-light.svg" width="48%">
 </picture>
 </p>
 
@@ -57,6 +44,8 @@
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/activity-dark.svg">
   <img alt="My weekly commits, last 52 weeks" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/activity-light.svg" width="100%">
 </picture>
+
+<sub>Every figure here counts <b>my own</b> commits, never a repository's totals, across the public repositories I own and the ones I contribute to. Recomputed daily by a job in this repository — no third-party service involved.</sub>
 
 ## Stack
 

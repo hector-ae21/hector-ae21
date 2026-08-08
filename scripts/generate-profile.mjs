@@ -186,9 +186,8 @@ async function collect(content) {
 
   const languages = new Map();  // language  → bytes attributable to this user
   const perRepo = new Map();    // repo      → this user's commits
-  const perOwner = new Map();   // owner     → this user's commits
-  const perYear = new Map();    // year      → this user's commits
   const weeks = new Map();      // week (ts) → this user's commits
+  const owners = new Set();     // accounts this user has actually committed to
   let mine = 0;
 
   for (const repo of repos) {
@@ -205,12 +204,10 @@ async function collect(content) {
       const rowName = repo.owner.login.toLowerCase() === login.toLowerCase()
         ? repo.name : repo.full_name;
       perRepo.set(rowName, (perRepo.get(rowName) || 0) + myTotal);
-      perOwner.set(repo.owner.login, (perOwner.get(repo.owner.login) || 0) + myTotal);
+      owners.add(repo.owner.login.toLowerCase());
       for (const w of me.weeks || []) {
         if (!w.c) continue;
         weeks.set(w.w, (weeks.get(w.w) || 0) + w.c);
-        const year = new Date(w.w * 1000).getUTCFullYear();
-        perYear.set(year, (perYear.get(year) || 0) + w.c);
       }
     }
 
@@ -283,13 +280,12 @@ async function collect(content) {
     downloads30d: packages.reduce((s, p) => s + (p.downloads || 0), 0),
     commitsTotal: mine,
     commits12mo: timeline.reduce((s, w) => s + w.total, 0),
-    orgs: [...perOwner.keys()].filter((o) => o.toLowerCase() !== login.toLowerCase()).length,
+    // Organisations counted by commits landed, not by membership: being in an
+    // org says nothing, having written some of its code does.
+    orgs: [...owners].filter((o) => o !== login.toLowerCase()).length,
     timeline,
     languages: rank(languages, 6),
     perRepo: rank(perRepo, 6),
-    perOwner: rank(perOwner, 6),
-    perYear: [...perYear.entries()].sort((a, b) => a[0] - b[0])
-      .map(([name, value]) => ({ name: String(name), value })),
   };
 }
 
@@ -322,6 +318,42 @@ const svg = (w, h, body, th) =>
 ${body}
 </svg>
 `;
+
+/* ── motion ─────────────────────────────────────────────────────────────────
+ * Every chart draws itself once when the image loads: bars grow from their own
+ * left edge, the activity line draws itself end to end, tiles rise into place.
+ * It runs once and holds — this is a page being read, not a dashboard being
+ * watched, and a loop would keep pulling the eye back to a number that has not
+ * changed.
+ *
+ * All of it is CSS inside the SVG, because an SVG loaded through <img> runs
+ * declarative animation and no script. Two details make it work rather than
+ * merely play:
+ *
+ *  - `both` as fill-mode. Without it a staggered bar would flash at full width
+ *    during its delay and then snap back to zero to start.
+ *  - `pathLength="1"` on the activity line. It renormalises the path so a dash
+ *    of 1 covers it exactly, whatever its real length, and the reveal is a
+ *    single offset from 1 to 0 with no measuring.
+ *
+ * The reduced-motion block has to restate the finished values, not just switch
+ * the animation off: the resting state of a bar is scaleX(0), so cancelling the
+ * animation without it would leave the chart empty for exactly the readers who
+ * asked for less movement.
+ */
+const MOTION = `<style>
+@keyframes grow{from{transform:scaleX(0)}}
+@keyframes rise{from{opacity:0;transform:translateY(9px)}}
+@keyframes fade{from{opacity:0}}
+@keyframes draw{to{stroke-dashoffset:0}}
+.bar{transform-box:fill-box;transform-origin:left center;animation:grow .9s cubic-bezier(.22,1,.36,1) var(--d,0s) both}
+.rise{animation:rise .7s cubic-bezier(.22,1,.36,1) var(--d,0s) both}
+.fade{animation:fade .8s ease-out var(--d,0s) both}
+.draw{animation:draw 1.7s ease-out .1s both}
+@media (prefers-reduced-motion:reduce){
+.bar,.rise,.fade,.draw{animation:none;transform:none;opacity:1;stroke-dashoffset:0}
+}
+</style>`;
 
 /* Approximate advance width, in ems, for the system sans stack. Exact metrics
  * would need the font file, which is the reader's, not ours. Only pill *width*
@@ -460,11 +492,13 @@ function kpiStrip(tiles, mode) {
     const divider = i === 0 ? ""
       : `<line x1="${pad + cw * i}" y1="24" x2="${pad + cw * i}" y2="${H - 24}" stroke="${th.grid}" stroke-width="1"/>`;
     return `${divider}
+<g class="rise" style="--d:${(i * 0.07).toFixed(2)}s">
 ${text(cx, 50, value, { size: 34, weight: 700, fill: th.primary, anchor: "middle" })}
-${text(cx, 72, label.toUpperCase(), { size: 10, weight: 600, fill: th.muted, anchor: "middle" })}`;
+${text(cx, 72, label.toUpperCase(), { size: 10, weight: 600, fill: th.muted, anchor: "middle" })}
+</g>`;
   }).join("\n");
 
-  return svg(W, H, body, th);
+  return svg(W, H, `${MOTION}\n${body}`, th);
 }
 
 /* ── chart: ranked horizontal bars ───────────────────────────────────────
@@ -504,10 +538,13 @@ ${text(W / 2, top + 20, "No data yet", { size: 12, fill: th.muted, anchor: "midd
     // Scaled against the largest value, not the total, so a small class still
     // renders as a bar you can see and compare.
     const w = Math.max(2, (item.value / max) * trackW);
+    // Each row starts a beat after the one above, so the chart fills top-down
+    // rather than all at once — the order of the ranking is the order it draws.
+    const d = `--d:${(i * 0.07).toFixed(2)}s`;
     return `${text(0, mid + 4, clip(label(item)), { size: 11, weight: 600, fill: th.primary })}
 <rect x="${labelW}" y="${y}" width="${trackW}" height="${barH}" rx="${r}" fill="${th.grid}"/>
-<rect x="${labelW}" y="${y}" width="${w.toFixed(1)}" height="${barH}" rx="${r}" fill="${th.brand}"/>
-${text(W, mid + 4, value(item), { size: 11, fill: th.secondary, anchor: "end" })}`;
+<rect class="bar" style="${d}" x="${labelW}" y="${y}" width="${w.toFixed(1)}" height="${barH}" rx="${r}" fill="${th.brand}"/>
+<g class="fade" style="${d}">${text(W, mid + 4, value(item), { size: 11, fill: th.secondary, anchor: "end" })}</g>`;
   }).join("\n");
 
   // Horizontal breathing room is baked into the canvas rather than added between
@@ -515,7 +552,7 @@ ${text(W, mid + 4, value(item), { size: 11, fill: th.secondary, anchor: "end" })
   // is a run of &nbsp;, whose width depends on the reader's font. Padding here is
   // measured in the chart's own units and scales with it.
   return svg(W + padLeft + padRight, top + slots * rowH + 6,
-    `<g transform="translate(${padLeft},0)">\n${head}\n${body}\n</g>`, th);
+    `${MOTION}\n<g transform="translate(${padLeft},0)">\n${head}\n${body}\n</g>`, th);
 }
 
 /* ── chart: weekly commit activity ──────────────────────────────────────── */
@@ -558,11 +595,12 @@ ${text(m.left - 8, Y(v) + 4, String(Math.round(v)), { size: 10, fill: th.muted, 
       { size: 10, fill: th.muted, anchor });
   }).join("\n");
 
-  return svg(W, H, `<g>
+  return svg(W, H, `${MOTION}
+<g>
 ${head}
 ${grid}
-<path d="${area}" fill="${th.brandSoft}"/>
-<path d="${line}" fill="none" stroke="${th.brand}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<path class="fade" style="--d:.5s" d="${area}" fill="${th.brandSoft}"/>
+<path class="draw" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1" d="${line}" fill="none" stroke="${th.brand}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
 <line x1="${m.left}" y1="${Y(0)}" x2="${W - m.right}" y2="${Y(0)}" stroke="${th.axis}" stroke-width="1"/>
 ${xLabels}
 </g>`, th);
@@ -797,9 +835,12 @@ function renderReadme(content, data) {
   const c = content.copy;
   const stamp = new Date().toISOString().slice(0, 10);
 
+  // Two charts, not four. What I write in and what I write it on, side by side;
+  // the owner breakdown was the repository one grouped a level up, and the yearly
+  // one was the weekly chart below at a coarser resolution. Both said the same
+  // thing twice.
   const grid = chartGrid(login, [
-    [{ base: "languages", alt: c.metrics.languages }, { base: "peryear", alt: c.metrics.peryear }],
-    [{ base: "perrepo", alt: c.metrics.perrepo }, { base: "perowner", alt: "My commits by owner" }],
+    [{ base: "languages", alt: c.metrics.languages }, { base: "perrepo", alt: c.metrics.perrepo }],
   ]);
 
   // No <h1>: GitHub prints the account's name and bio in the sidebar beside this
@@ -816,19 +857,19 @@ function renderReadme(content, data) {
 ${content.opening ? `<p align="center"><em>${esc(content.opening)}</em></p>\n` : ""}
 ${headerLinks(content, data, login, picture(login, "banner", bannerAlt))}
 
-${picture(login, "stats", "Profile statistics")}
-
 ## ${content.about.heading}
 
 ${content.about.points.map((p) => `- ${p}`).join("\n")}
 
 ## ${c.metrics.heading}
 
-<sub>${c.metrics.note}</sub>
+${picture(login, "stats", "Profile statistics")}
 
 ${grid}
 
 ${picture(login, "activity", c.metrics.activity)}
+
+<sub>${c.metrics.note}</sub>
 
 ## ${content.stack.heading}
 
@@ -930,18 +971,15 @@ async function main() {
     }
 
     const m = content.copy.metrics;
-    // Each grid row is rendered at a shared height so the two tiles line up.
-    const rowA = Math.max(data.languages.length, data.perYear.length);
-    const rowB = Math.max(data.perRepo.length, data.perOwner.length);
-    // Left-column tiles pad on the right, right-column tiles pad on the left, so
-    // the whole gutter lands between them and the outer edges stay flush.
+    // Both tiles in the row are rendered at a shared height so they line up.
+    const rows = Math.max(data.languages.length, data.perRepo.length);
+    // The left tile pads on the right, the right tile on the left, so the whole
+    // gutter lands between them and the outer edges stay flush.
     const L = { padRight: GUTTER }, R = { padLeft: GUTTER };
 
-    await w("languages", barRows(data.languages, mode, { ...L, title: m.languages, rows: rowA }));
-    await w("peryear", barRows(data.perYear, mode, { ...R, unit: "count", title: m.peryear, rows: rowA }));
+    await w("languages", barRows(data.languages, mode, { ...L, title: m.languages, rows }));
     // Repository names are long; give the label column extra room before clipping.
-    await w("perrepo", barRows(data.perRepo, mode, { ...L, unit: "count", title: m.perrepo, rows: rowB, labelPct: 0.46 }));
-    await w("perowner", barRows(data.perOwner, mode, { ...R, unit: "count", title: m.perowner, rows: rowB, labelPct: 0.46 }));
+    await w("perrepo", barRows(data.perRepo, mode, { ...R, unit: "count", title: m.perrepo, rows, labelPct: 0.46 }));
     await w("activity", activityChart(data.timeline, mode, m.activity));
   }
 

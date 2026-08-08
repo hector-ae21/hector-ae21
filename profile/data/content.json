@@ -169,9 +169,7 @@
       "installs": "Installs, last 30 days",
       "installsNote": "Downloads reported by the npm registry for the last 30 days. Counted per package, and it counts machines rather than people — a CI pipeline installing on every build is in there too.",
       "languages": "Code by language",
-      "peryear": "My commits by year",
       "perrepo": "My commits by repository",
-      "perowner": "My commits by owner",
       "activity": "My weekly commits, last 52 weeks"
     },
     "footer": "Built to be rebuilt: this page regenerates itself."
