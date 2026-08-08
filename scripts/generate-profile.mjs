@@ -715,7 +715,7 @@ function badges(p) {
  *  is set small: it is a reference, not a headline. */
 function stackTable(stack) {
   const rows = stack.groups.map((g) =>
-    `<tr><td valign="top"><sub><b>${esc(g.label)}</b></sub></td><td><sub>${g.items.map((i) => `<code>${esc(i)}</code>`).join(" ")}</sub></td></tr>`
+    `<tr><td valign="top"><sub><b>${esc(g.label)}</b></sub></td><td><sub>${g.items.map((i) => `<code>${esc(i)}</code>`).join(" · ")}</sub></td></tr>`
   ).join("\n");
   return `<table>\n${rows}\n</table>`;
 }
@@ -756,7 +756,8 @@ function featuredGrid(login, projects) {
  */
 function linkTable(content, data, login, banner) {
   const q = content.quickAccess || {};
-  const lock = `<picture><source media="(prefers-color-scheme: dark)" srcset="${RAW(login)}/lock-dark.svg"><img alt="private" src="${RAW(login)}/lock-light.svg" height="11"></picture>`;
+  // Sized against the small type it sits in, not the body text.
+  const lock = `<picture><source media="(prefers-color-scheme: dark)" srcset="${RAW(login)}/lock-dark.svg"><img alt="private" src="${RAW(login)}/lock-light.svg" height="10"></picture>`;
 
   const pinned = (q.pinned || []).slice(0, q.maxPinned ?? 10);
   if ((q.pinned || []).length > pinned.length) {

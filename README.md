@@ -10,10 +10,9 @@
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/banner-dark.svg">
   <img alt="What I work on: backend, packages, data, security, moodle, research" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/banner-light.svg" width="100%">
 </picture></td></tr>
-<tr><td align="right"><a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/packages.md">Packages</a> / <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/moodle.md">Moodle</a> / <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/stack.md">Stack</a></td></tr>
-<tr><td align="right"><a href="https://www.linkedin.com/in/hector-arrechea/">LinkedIn</a> / <a href="https://orcid.org/0009-0008-0090-3927">ORCID</a> / <a href="https://www.npmjs.com/~hector21">npm</a> / <a href="https://github.com/didactika">Didactika</a> / <a href="https://github.com/resilientmq">ResilientMQ</a></td></tr>
-<tr><td align="right"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="11"></picture> <a href="https://github.com/hector-ae21/CIBINT">CIBINT</a></td></tr>
-<tr><td align="right"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="11"></picture> <a href="https://github.com/mmasias/TDHector">TDHector</a> / <a href="https://github.com/hector-ae21/http-response-client">http-response-client</a> / <a href="https://github.com/hector-ae21/moodle-local_digitalta">digitalta-plugin</a> / <a href="https://github.com/hector-ae21/moodle-theme_digitalta">digitalta-theme</a> / <a href="https://github.com/hector-ae21/Cache-Db">Cache-Db</a></td></tr>
+<tr><td align="right"><sub><a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/packages.md">Packages</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/moodle.md">Moodle</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/stack.md">Stack</a><br><a href="https://www.linkedin.com/in/hector-arrechea/">LinkedIn</a> · <a href="https://orcid.org/0009-0008-0090-3927">ORCID</a> · <a href="https://www.npmjs.com/~hector21">npm</a> · <a href="https://github.com/didactika">Didactika</a> · <a href="https://github.com/resilientmq">ResilientMQ</a></sub></td></tr>
+<tr><td align="right"><sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="10"></picture> <a href="https://github.com/hector-ae21/CIBINT">CIBINT</a></sub></td></tr>
+<tr><td align="right"><sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="10"></picture> <a href="https://github.com/mmasias/TDHector">TDHector</a> / <a href="https://github.com/hector-ae21/http-response-client">http-response-client</a> / <a href="https://github.com/hector-ae21/moodle-local_digitalta">digitalta-plugin</a> / <a href="https://github.com/hector-ae21/moodle-theme_digitalta">digitalta-theme</a> / <a href="https://github.com/hector-ae21/Cache-Db">Cache-Db</a></sub></td></tr>
 </table>
 
 <picture>
@@ -79,12 +78,12 @@ I like working with other people and I will take the lead when a project needs s
 ## Stack
 
 <table>
-<tr><td valign="top"><sub><b>Languages</b></sub></td><td><sub><code>TypeScript</code> <code>JavaScript</code> <code>PHP</code> <code>Python</code> <code>Java</code> <code>C / C++</code></sub></td></tr>
-<tr><td valign="top"><sub><b>Backend</b></sub></td><td><sub><code>Node.js</code> <code>Express</code> <code>Fastify</code> <code>Hono</code> <code>Next.js</code></sub></td></tr>
-<tr><td valign="top"><sub><b>Data</b></sub></td><td><sub><code>PostgreSQL</code> <code>MongoDB</code> <code>Prisma</code> <code>Sequelize</code> <code>Mongoose</code></sub></td></tr>
-<tr><td valign="top"><sub><b>Messaging</b></sub></td><td><sub><code>RabbitMQ</code> <code>AMQP</code> <code>Event-driven design</code> <code>Dead-letter queues</code></sub></td></tr>
-<tr><td valign="top"><sub><b>Platforms</b></sub></td><td><sub><code>Moodle</code> <code>Docker</code> <code>GitHub Actions</code> <code>Jest</code> <code>Testcontainers</code></sub></td></tr>
-<tr><td valign="top"><sub><b>Security</b></sub></td><td><sub><code>OSINT</code> <code>Threat intelligence</code> <code>MITRE ATT&amp;CK</code> <code>OPSEC</code></sub></td></tr>
+<tr><td valign="top"><sub><b>Languages</b></sub></td><td><sub><code>TypeScript</code> · <code>JavaScript</code> · <code>PHP</code> · <code>Python</code> · <code>Java</code> · <code>C / C++</code></sub></td></tr>
+<tr><td valign="top"><sub><b>Backend</b></sub></td><td><sub><code>Node.js</code> · <code>Express</code> · <code>Fastify</code> · <code>Hono</code> · <code>Next.js</code></sub></td></tr>
+<tr><td valign="top"><sub><b>Data</b></sub></td><td><sub><code>PostgreSQL</code> · <code>MongoDB</code> · <code>Prisma</code> · <code>Sequelize</code> · <code>Mongoose</code></sub></td></tr>
+<tr><td valign="top"><sub><b>Messaging</b></sub></td><td><sub><code>RabbitMQ</code> · <code>AMQP</code> · <code>Event-driven design</code> · <code>Dead-letter queues</code></sub></td></tr>
+<tr><td valign="top"><sub><b>Platforms</b></sub></td><td><sub><code>Moodle</code> · <code>Docker</code> · <code>GitHub Actions</code> · <code>Jest</code> · <code>Testcontainers</code></sub></td></tr>
+<tr><td valign="top"><sub><b>Security</b></sub></td><td><sub><code>OSINT</code> · <code>Threat intelligence</code> · <code>MITRE ATT&amp;CK</code> · <code>OPSEC</code></sub></td></tr>
 </table>
 
 ---
