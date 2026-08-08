@@ -5,6 +5,8 @@
   Last generated: 2026-08-08
 -->
 
+<p align="center"><em>I learned most of this by getting it wrong first.</em></p>
+
 <table width="100%">
 <tr><td align="center"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/banner-dark.svg">
@@ -21,27 +23,12 @@
 
 ## About
 
-Computer engineer with five years building software. Degree at Universidad Europea del Atlántico, master's in cybersecurity at UNIR.
-
-Most of what I know came from things that did not work the first time, so I have stopped avoiding them. I am at my best where an idea can be tried rather than argued about, and I would rather learn a job by doing it than by reading about it.
-
-I like working with other people and I will take the lead when a project needs someone to. I also think there is a life outside this — the aim is for the two to fit together, and when they collide I finish what I owe first.
-
-> A service that answers every request and gets none of them right is still down. It just hasn't noticed yet.
-
-## Work worth pointing at
-
-<p>
-<a href="https://github.com/resilientmq/core"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/card-resilientmq-core-dark.svg"><img alt="@resilientmq/core" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/card-resilientmq-core-light.svg" width="48%"></picture></a>
-<a href="https://github.com/didactika/prisma-autoread"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/card-didactika-prisma-autoread-dark.svg"><img alt="@didactika/prisma-autoread" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/card-didactika-prisma-autoread-light.svg" width="48%"></picture></a>
-</p>
-
-<p>
-<a href="https://github.com/hector-ae21/http-response-client"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/card-http-response-client-dark.svg"><img alt="http-response-client" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/card-http-response-client-light.svg" width="48%"></picture></a>
-<a href="https://github.com/didactika/moodle-client"><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/card-moodle-web-service-client-dark.svg"><img alt="moodle-web-service-client" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/card-moodle-web-service-client-light.svg" width="48%"></picture></a>
-</p>
-
-<sub>Everything else: <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/packages.md">Packages</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/moodle.md">Moodle</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/stack.md">Stack</a></sub>
+- Computer engineer, five years building software. Degree at Universidad Europea del Atlántico, master's in cybersecurity at UNIR.
+- Backend and event-driven systems: queues, retries, and the integrations that hold a university's systems together.
+- I would rather learn a job by doing it than by reading about it, and I go looking for the problems that did not work the first time.
+- At my best where an idea can be tried instead of argued about.
+- Happy to lead a project when it needs someone to, and happier still with people around to do it with.
+- There is a life outside this. When the two collide I finish what I owe first.
 
 ## Code and commits
 

@@ -7,7 +7,7 @@
  *           registry.npmjs.org           (published versions)
  * Writes  : README.md                    (what the profile page shows)
  *           profile/pages/*.md           (one detail page per portfolio group)
- *           profile/assets/*.svg         (banner, cards, charts — each in light
+ *           profile/assets/*.svg         (banner, charts, lock — each in light
  *                                         and dark)
  *
  * Both output directories are swept at the end of a run: anything in them this
@@ -27,9 +27,11 @@
  * output would be flattering and false — most of these repositories have other
  * authors, and three of them are forks whose history predates any of this work.
  *
- * The second rule follows from the first: nothing without a public repository is
- * rendered at all. A card naming private work is a claim the reader is asked to
- * take on trust, which is the opposite of what the rest of this page is for.
+ * The second rule follows from the first: no private work is described anywhere
+ * on the page. A paragraph naming a repository nobody can open is a claim the
+ * reader is asked to take on trust, which is the opposite of what this is for.
+ * The one exception is the launcher, where a locked link is plainly a shortcut
+ * for its owner and says so with a padlock.
  *
  * No dependencies. Node >= 20 (global fetch).
  */
@@ -257,13 +259,6 @@ async function collect(content) {
     packages.push({ name: p.npm, version, downloads: await npmDownloads(p.npm) });
   }
 
-  // Repository language, keyed by full name, for the featured cards. Taken from
-  // the repository record rather than re-derived: the card states what GitHub
-  // shows on the repository itself, so the two never disagree. Version, licence
-  // and last commit are not collected here — on the detail pages those come from
-  // shields.io, which re-reads them on every page load.
-  const repoLanguage = Object.fromEntries(repos.map((r) => [r.full_name, r.language]));
-
   // The self-filling half of the launcher: what was pushed to most recently,
   // minus anything already pinned by hand and anything on the exclude list.
   // `pushed_at` rather than commit dates on purpose — the question this answers
@@ -278,7 +273,7 @@ async function collect(content) {
     .map((r) => ({ repo: r.full_name, label: r.name, owner: r.owner.login }));
 
   return {
-    login, user, repos, packages, repoLanguage, recent,
+    login, user, repos, packages, recent,
     downloads30d: packages.reduce((s, p) => s + (p.downloads || 0), 0),
     commitsTotal: mine,
     commits12mo: timeline.reduce((s, w) => s + w.total, 0),
@@ -340,36 +335,6 @@ function width(s, size) {
     else ems += 0.55;
   }
   return ems * size;
-}
-
-/** Greedy word wrap against the estimate above. SVG has no flow text: a run of
- *  prose is only as many <text> elements as you cut it into yourself. Anything
- *  past `maxLines` is dropped and the last line gets an ellipsis, so an over-long
- *  description degrades to a clipped sentence instead of overflowing the card. */
-function wrap(s, maxWidth, size, maxLines) {
-  const lines = [];
-  let line = "";
-  for (const word of String(s).split(/\s+/)) {
-    const next = line ? `${line} ${word}` : word;
-    if (line && width(next, size) > maxWidth) {
-      lines.push(line);
-      line = word;
-      if (lines.length === maxLines) break;
-    } else {
-      line = next;
-    }
-  }
-  if (lines.length < maxLines && line) lines.push(line);
-  if (lines.length === maxLines) {
-    const last = lines[maxLines - 1];
-    const consumed = lines.join(" ");
-    if (consumed.length < s.length - 1) {
-      let t = last;
-      while (t && width(`${t}…`, size) > maxWidth) t = t.slice(0, -1);
-      lines[maxLines - 1] = `${t.replace(/[\s,;.]+$/, "")}…`;
-    }
-  }
-  return lines;
 }
 
 /* ── banner ─────────────────────────────────────────────────────────────────
@@ -452,53 +417,6 @@ ${text(cx, cy + 45, f.label, { size: 10, weight: 600, fill: th.muted, anchor: "m
 <path d="${thread}" fill="none" stroke="${th.axis}" stroke-width="1.6"/>
 <path class="flow" d="${thread}" fill="none" stroke="${th.brand}" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="20 240"/>
 ${chips}`, th);
-}
-
-/* ── featured cards ─────────────────────────────────────────────────────────
- * The repository "pin" card, drawn here instead of fetched from one of the
- * public card services. Two reasons, both from checking rather than taste:
- * those cards lead with stars and forks, which on these repositories are 1 and 2
- * and would undersell working software; and two of the four have no GitHub
- * description at all, so the card would render half empty. Drawing it locally
- * puts the sentence *I* wrote on the card, swaps stars for monthly installs, and
- * keeps the whole page on one palette. */
-const CARD = { W: 520, pad: 20, descTop: 82, lineH: 17, descSize: 11.5, maxLines: 3 };
-
-const cardText = (p) => p.short || p.desc;
-const cardLines = (p) =>
-  wrap(cardText(p), CARD.W - CARD.pad * 2, CARD.descSize, CARD.maxLines).length;
-
-/** `lines` is the tallest description across the whole set, not this card's own.
- *  Two cards sit side by side at the same rendered width, so they have to be the
- *  same height or the shorter one hangs; sizing every card to the longest text
- *  keeps them level without reserving three lines for a card that uses two. */
-function repoCard(project, data, mode, lines = CARD.maxLines) {
-  const th = THEME[mode];
-  const { W, pad, descTop, lineH, descSize } = CARD;
-  const divider = descTop + (lines - 1) * lineH + lineH;
-  const footY = divider + 23.5;
-  const H = footY + 19.5;
-
-  const pkg = data.packages.find((p) => p.name === project.npm);
-  const language = data.repoLanguage?.[project.repo] || project.tech[0] || "";
-  const owner = project.repo ? project.repo.split("/")[0] : null;
-
-  const desc = wrap(cardText(project), W - pad * 2, descSize, lines)
-    .map((line, i) => text(pad, descTop + i * lineH, line, { size: descSize, fill: th.secondary }));
-
-  const foot = [
-    pkg ? `v${pkg.version}` : null,
-    pkg?.downloads ? `${fmt(pkg.downloads)} installs/mo` : null,
-  ].filter(Boolean).join("  ·  ");
-
-  return svg(W, H, `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="10" fill="${th.surface}" stroke="${th.axis}" stroke-width="1"/>
-${text(pad, 36, project.name, { size: 15.5, weight: 700, fill: th.brand })}
-${text(pad, 56, [owner, project.role].filter(Boolean).join(" · "), { size: 10.5, weight: 600, fill: th.muted })}
-${desc.join("\n")}
-<line x1="${pad}" y1="${divider}" x2="${W - pad}" y2="${divider}" stroke="${th.grid}" stroke-width="1"/>
-${language ? `<circle cx="${pad + 4.5}" cy="${footY - 4}" r="4.5" fill="${th.brand}"/>
-${text(pad + 16, footY, language, { size: 11, weight: 600, fill: th.secondary })}` : ""}
-${foot ? text(W - pad, footY, foot, { size: 11, fill: th.secondary, anchor: "end" }) : ""}`, th);
 }
 
 /* ── lock ───────────────────────────────────────────────────────────────────
@@ -720,33 +638,22 @@ function stackTable(stack) {
   return `<table>\n${rows}\n</table>`;
 }
 
-/** Two linked cards per row. Not a table: GitHub frames every table cell, and
- *  each card already draws its own border — the two together read as a box in a
- *  box. Plain images inside a paragraph, same trick as the chart grid. */
-function featuredGrid(login, projects) {
-  const cell = (p) =>
-    `<a href="https://github.com/${p.repo}"><picture><source media="(prefers-color-scheme: dark)" srcset="${RAW(login)}/card-${slug(p.name)}-dark.svg"><img alt="${esc(p.name)}" src="${RAW(login)}/card-${slug(p.name)}-light.svg" width="48%"></picture></a>`;
-  const rows = [];
-  for (let i = 0; i < projects.length; i += 2) {
-    rows.push(`<p>\n${projects.slice(i, i + 2).map(cell).join("\n")}\n</p>`);
-  }
-  return rows.join("\n\n");
-}
-
-/* ── the link table ─────────────────────────────────────────────────────────
- * Everything above the fold that is a link and not a picture: the two nav rows
- * and the launcher rows, in one table, right-aligned, one row each.
+/* ── header links ───────────────────────────────────────────────────────────
+ * Everything under the banner that is a link: where you can go inside the
+ * profile, centred, and the launcher rows, ranged right.
  *
- * A table because the alternative is worse in both directions. Drawn pills cost
- * an image request each and cannot wrap or be selected; paragraphs split by <hr>
- * put a quarter-em band between every line, which is more air than the whole
- * block is worth. A table row is separated by exactly one border pixel, drawn by
- * GitHub in the same grey as the rule under a heading, and the rows sit tight.
+ * A table, for one reason: a table row border is the only hairline GitHub
+ * markdown will draw. Drawn pills cost an image request each and cannot be
+ * selected; <hr> is a quarter-em band with 24px of margin either side; a
+ * one-pixel image reads as a picture of a line, not a line. The surrounding box
+ * is the price of the rule between the rows.
  *
- * The banner is the first row rather than a picture above the table, and that is
- * load-bearing: GitHub lays tables out at `width: max-content`, so a table of
- * short link rows shrinks to hug them and "right-aligned" stops meaning anything.
- * A full-width image in the first cell is what stretches the box to the column.
+ * The banner is the first cell rather than a picture above the table, and that
+ * is load-bearing: GitHub lays tables out at `width: max-content`, so a table of
+ * short link rows shrinks to hug them and drifts off to the left of a full-width
+ * page. A wide image in the first cell is what holds the box open. Navigation
+ * shares that cell, because a rule between the picture and the three links that
+ * say what it is a picture of divides nothing worth dividing.
  *
  * The launcher half is for the owner rather than a visitor: fifteen slots, ten
  * pinned by hand and five that reorder themselves by what was pushed to last.
@@ -754,7 +661,7 @@ function featuredGrid(login, projects) {
  * automatic five, a padlock for what is private. A padlock needs no caption, and
  * this block is for the person who already knows.
  */
-function linkTable(content, data, login, banner) {
+function headerLinks(content, data, login, banner) {
   const q = content.quickAccess || {};
   // Sized against the small type it sits in, not the body text.
   const lock = `<picture><source media="(prefers-color-scheme: dark)" srcset="${RAW(login)}/lock-dark.svg"><img alt="private" src="${RAW(login)}/lock-light.svg" height="10"></picture>`;
@@ -785,8 +692,8 @@ function linkTable(content, data, login, banner) {
 
   // Where you can go from here, and what is mine. Two different things, so they
   // are set differently: navigation centred and joined by a middot, repositories
-  // ranged right and joined by a slash, the way a path is written. Nobody has to
-  // be told which is which.
+  // ranged right and joined by a slash, the way a path is written. That contrast
+  // is what does the separating now that there is no rule between them.
   const nav = content.nav.sections
     .map((s) => `<a href="${PAGE(login, s.to)}">${esc(s.label)}</a>`).join(" · ");
 
@@ -799,24 +706,10 @@ function linkTable(content, data, login, banner) {
 
   // Everything set small. This is the index, not the page: it should be legible
   // and stay out of the way of the first thing anyone actually reads.
-  const cell = (html, align) => `<tr><td align="${align}"><sub>${html}</sub></td></tr>`;
-
-  // Banner and navigation share the first cell. A border between them would cut
-  // the picture off from the three links that say what it is a picture of; the
-  // first rule in the box should be where the shortcuts start, not before.
   return `<table width="100%">
 <tr><td align="center">${banner}${nav ? `<br><sub>${nav}</sub>` : ""}</td></tr>
-${repos.map((r) => cell(r, "right")).join("\n")}
+${repos.map((r) => `<tr><td align="right"><sub>${r}</sub></td></tr>`).join("\n")}
 </table>`;
-}
-
-/** One line under the cards pointing at the full listings. The nav pills at the
- *  top go to the same places; this repeats them where someone who just finished
- *  reading the cards is actually looking. */
-function moreLine(content, login) {
-  const links = content.groups.map((g) => `<a href="${PAGE(login, g.id)}">${esc(g.label)}</a>`)
-    .concat(`<a href="${PAGE(login, "stack")}">${esc(content.stack.heading)}</a>`);
-  return `<sub>${esc(content.copy.featured.more)}: ${links.join(" · ")}</sub>`;
 }
 
 function renderPage(content, group, login, data) {
@@ -882,7 +775,6 @@ function renderReadme(content, data) {
   const login = content.user.login;
   const c = content.copy;
   const stamp = new Date().toISOString().slice(0, 10);
-  const featured = content.projects.filter((p) => p.featured);
 
   const grid = chartGrid(login, [
     [{ base: "languages", alt: c.metrics.languages }, { base: "peryear", alt: c.metrics.peryear }],
@@ -900,21 +792,14 @@ function renderReadme(content, data) {
   Last generated: ${stamp}
 -->
 
-${linkTable(content, data, login, picture(login, "banner", bannerAlt))}
+${content.opening ? `<p align="center"><em>${esc(content.opening)}</em></p>\n` : ""}
+${headerLinks(content, data, login, picture(login, "banner", bannerAlt))}
 
 ${picture(login, "stats", "Profile statistics")}
 
 ## ${content.about.heading}
 
-${content.about.body.join("\n\n")}
-
-> ${content.about.quote}
-
-## ${c.featured.heading}
-
-${featuredGrid(login, featured)}
-
-${moreLine(content, login)}
+${content.about.points.map((p) => `- ${p}`).join("\n")}
 
 ## ${c.metrics.heading}
 
@@ -990,8 +875,6 @@ async function main() {
 
   console.log("Rendering assets …");
   const written = new Set();
-  const featured = content.projects.filter((p) => p.featured);
-  const featuredLines = Math.max(1, ...featured.map(cardLines));
   for (const mode of MODES) {
     // `dir` is the sub-folder under profile/assets, keyed to the document that
     // uses the asset: "" for the README, "pages/<id>" for a detail page.
@@ -1002,8 +885,6 @@ async function main() {
       await mkdir(target, { recursive: true });
       await writeFile(join(target, file), c, "utf8");
     };
-
-    for (const p of featured) await w(`card-${slug(p.name)}`, repoCard(p, data, mode, featuredLines));
 
     await w("banner", banner(content, mode));
     await w("lock", lockIcon(mode));

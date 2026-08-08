@@ -4,7 +4,6 @@
   "user": {
     "login": "hector-ae21",
     "name": "Hector Arrechea",
-    "role": "Backend engineer · event-driven systems",
     "location": "Santander, Spain",
     "linkedin": "https://www.linkedin.com/in/hector-arrechea/",
     "npm": "https://www.npmjs.com/~hector21",
@@ -20,6 +19,9 @@
     ]
   },
 
+  "$opening": "One line, centred, above everything else — before the banner, before any link. It is the first thing on the page, so it should sound like a person rather than a summary. The previous one, kept here in case it is wanted back: \"A service that answers every request and gets none of them right is still down. It just hasn't noticed yet.\"",
+  "opening": "I learned most of this by getting it wrong first.",
+
   "banner": {
     "$comment": "The strip at the top. No name and no job title on purpose: GitHub already prints both in the sidebar right next to it, so putting them in the one image everybody sees first would spend it on a repeat. It shows the ground I actually cover instead — one chip per facet, in whatever order reads best. Add or remove a facet and the banner redraws around it. `glyph` has to be one of the drawings in GLYPHS inside the generator.",
     "facets": [
@@ -33,14 +35,14 @@
   },
 
   "quickAccess": {
-    "$comment": "The launcher rows under the nav. Fifteen slots at most: up to `maxPinned` chosen here by hand, and `recentCount` filled automatically with whatever was pushed to most recently — that half is the only part of this profile that reorders itself. Rows are unlabelled on purpose; a rule between them is enough separation and a heading over four links is more furniture than content. A private entry needs `private: true` and its own `label`, since the token this runs under cannot read the repository to find one.",
+    "$comment": "The launcher rows under the nav. Fifteen slots at most: up to `maxPinned` chosen here by hand, and `recentCount` filled automatically with whatever was pushed to most recently — that half is the only part of this profile that reorders itself. Rows are unlabelled and unruled on purpose; ranging them right against the centred navigation above is enough to tell the two apart. A private entry needs `private: true` and its own `label`, since the token this runs under cannot read the repository to find one.",
     "maxPinned": 10,
     "recentCount": 5,
     "rows": [
       { "id": "university" },
       { "id": "personal" }
     ],
-    "$rows": "There is no `orgs` row: the organisations are already two pills up and a row of their repositories under my own read as somebody else's work on my page. An automatic entry whose row is not listed here is simply dropped, so today the five automatic slots only fill when one of my own repositories is the most recently pushed — and everything of mine worth a shortcut is pinned below.",
+    "$rows": "There is no `orgs` row: a row of somebody else's repositories under my own read as their work on my page. An automatic entry whose row is not listed here is simply dropped, so today the five automatic slots only fill when one of my own repositories is the most recently pushed — and everything of mine worth a shortcut is pinned below.",
     "pinned": [
       { "repo": "hector-ae21/CIBINT", "label": "CIBINT", "row": "university", "private": true },
       { "repo": "mmasias/TDHector", "label": "TDHector", "row": "personal", "private": true },
@@ -54,13 +56,16 @@
   },
 
   "about": {
+    "$comment": "A list rather than paragraphs, so it can be read at the speed people actually read a profile. One idea per line, no line running past two.",
     "heading": "About",
-    "body": [
-      "Computer engineer with five years building software. Degree at Universidad Europea del Atlántico, master's in cybersecurity at UNIR.",
-      "Most of what I know came from things that did not work the first time, so I have stopped avoiding them. I am at my best where an idea can be tried rather than argued about, and I would rather learn a job by doing it than by reading about it.",
-      "I like working with other people and I will take the lead when a project needs someone to. I also think there is a life outside this — the aim is for the two to fit together, and when they collide I finish what I owe first."
-    ],
-    "quote": "A service that answers every request and gets none of them right is still down. It just hasn't noticed yet."
+    "points": [
+      "Computer engineer, five years building software. Degree at Universidad Europea del Atlántico, master's in cybersecurity at UNIR.",
+      "Backend and event-driven systems: queues, retries, and the integrations that hold a university's systems together.",
+      "I would rather learn a job by doing it than by reading about it, and I go looking for the problems that did not work the first time.",
+      "At my best where an idea can be tried instead of argued about.",
+      "Happy to lead a project when it needs someone to, and happier still with people around to do it with.",
+      "There is a life outside this. When the two collide I finish what I owe first."
+    ]
   },
 
   "groups": [
@@ -85,8 +90,6 @@
       "group": "packages",
       "role": "Author",
       "npm": "@resilientmq/core",
-      "featured": true,
-      "short": "Resilient event processing for RabbitMQ: retry policy, dead-letter routing and per-event state, so a redelivery is never processed twice.",
       "desc": "Resilient event processing for RabbitMQ. Declares which events a consumer handles, then takes care of everything that can go wrong around them: retry policy, dead-letter routing, per-event state so a redelivery is not reprocessed, and a controlled way to mark an event as deliberately ignored rather than failed.",
       "tech": ["TypeScript", "RabbitMQ", "amqplib", "Testcontainers"]
     },
@@ -96,8 +99,6 @@
       "group": "packages",
       "role": "Lead contributor",
       "npm": "@didactika/prisma-autoread",
-      "featured": true,
-      "short": "One declaration turns a Prisma model into a search endpoint: filters, sorting, includes, aggregations, cursor and offset paging.",
       "desc": "Drop-in search endpoints for Express and Prisma. One declaration yields filtering, sorting, field selection, relation includes, aggregations and both offset and cursor pagination — over GET, the new QUERY method or POST — emitting HAL, JSON:API or CSV.",
       "tech": ["TypeScript", "Prisma", "Express", "Fastify", "Hono"]
     },
@@ -107,8 +108,6 @@
       "group": "packages",
       "role": "Author",
       "npm": "http-response-client",
-      "featured": true,
-      "short": "One response shape for a whole Express service. Typed HTTP errors and middleware that returns a body instead of a stack trace.",
       "desc": "One shape for every response an Express service returns, success or failure. Typed constructors for the standard HTTP errors, custom errors on the same contract, and middleware that turns a thrown error into a well-formed body instead of a stack trace.",
       "tech": ["TypeScript", "Express"]
     },
@@ -118,8 +117,6 @@
       "group": "moodle",
       "role": "Author",
       "npm": "moodle-web-service-client",
-      "featured": true,
-      "short": "Typed client for the Moodle web-service API. Deals with its flattened parameters and its habit of returning errors with a 200.",
       "desc": "Typed Node.js client for the Moodle web-service API. Handles Moodle's flattened parameter encoding and its habit of returning errors with a 200, so callers get a rejected promise instead of a body they have to inspect.",
       "tech": ["TypeScript", "Moodle"]
     },
@@ -129,7 +126,6 @@
       "group": "packages",
       "role": "Author",
       "npm": "@resilientmq/mongoose-connector",
-      "short": "MongoDB storage for ResilientMQ. Keeps event state across restarts so redeliveries stay idempotent.",
       "desc": "MongoDB storage backend for ResilientMQ. Persists event state through Mongoose so consumer restarts and redeliveries stay idempotent.",
       "tech": ["TypeScript", "Mongoose", "MongoDB"]
     },
@@ -138,7 +134,6 @@
       "repo": "hector-ae21/moodle-local_digitalta",
       "group": "moodle",
       "role": "Contributor",
-      "short": "Local plugin behind DigitalTA on Moodle 4.1: the data model, the pages and the services.",
       "desc": "Local plugin behind DigitalTA on Moodle 4.1 — the data model, pages and services for the platform's teaching-assistant workflow.",
       "tech": ["PHP", "Moodle 4.1"]
     },
@@ -147,7 +142,6 @@
       "repo": "hector-ae21/moodle-theme_digitalta",
       "group": "moodle",
       "role": "Contributor",
-      "short": "The theme that goes with it: layouts, SCSS and Mustache templates rather than a reskinned Boost.",
       "desc": "Companion theme for DigitalTA: layouts, SCSS and Mustache templates that give the plugin its own interface rather than a skinned Boost.",
       "tech": ["JavaScript", "SCSS", "Mustache"]
     }
@@ -167,10 +161,6 @@
   },
 
   "copy": {
-    "featured": {
-      "heading": "Work worth pointing at",
-      "more": "Everything else"
-    },
     "portfolio": {
       "viewAll": "Browse",
       "back": "Back to profile",
