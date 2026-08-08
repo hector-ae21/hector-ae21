@@ -801,9 +801,12 @@ function linkTable(content, data, login, banner) {
   // and stay out of the way of the first thing anyone actually reads.
   const cell = (html, align) => `<tr><td align="${align}"><sub>${html}</sub></td></tr>`;
 
+  // Banner and navigation share the first cell. A border between them would cut
+  // the picture off from the three links that say what it is a picture of; the
+  // first rule in the box should be where the shortcuts start, not before.
   return `<table width="100%">
-<tr><td>${banner}</td></tr>
-${[nav && cell(nav, "center"), ...repos.map((r) => cell(r, "right"))].filter(Boolean).join("\n")}
+<tr><td align="center">${banner}${nav ? `<br><sub>${nav}</sub>` : ""}</td></tr>
+${repos.map((r) => cell(r, "right")).join("\n")}
 </table>`;
 }
 

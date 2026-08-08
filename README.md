@@ -6,11 +6,10 @@
 -->
 
 <table width="100%">
-<tr><td><picture>
+<tr><td align="center"><picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/banner-dark.svg">
   <img alt="What I work on: backend, packages, data, security, moodle, research" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/banner-light.svg" width="100%">
-</picture></td></tr>
-<tr><td align="center"><sub><a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/packages.md">Packages</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/moodle.md">Moodle</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/stack.md">Stack</a></sub></td></tr>
+</picture><br><sub><a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/packages.md">Packages</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/moodle.md">Moodle</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/stack.md">Stack</a></sub></td></tr>
 <tr><td align="right"><sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="10"></picture> <a href="https://github.com/hector-ae21/CIBINT">CIBINT</a></sub></td></tr>
 <tr><td align="right"><sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="10"></picture> <a href="https://github.com/mmasias/TDHector">TDHector</a> / <a href="https://github.com/hector-ae21/http-response-client">http-response-client</a> / <a href="https://github.com/hector-ae21/moodle-local_digitalta">digitalta-plugin</a> / <a href="https://github.com/hector-ae21/moodle-theme_digitalta">digitalta-theme</a> / <a href="https://github.com/hector-ae21/Cache-Db">Cache-Db</a></sub></td></tr>
 </table>
