@@ -25,7 +25,7 @@
 </g>
 <line x1="424.8" y1="24" x2="424.8" y2="62" stroke="#21262d" stroke-width="1"/>
 <g class="rise" style="--d:0.14s">
-<text x="530" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#f0f6fc" text-anchor="middle">31</text>
+<text x="530" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#f0f6fc" text-anchor="middle">26</text>
 <text x="530" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#6e7681" text-anchor="middle">MERGED PULL REQUESTS</text>
 </g>
 <line x1="635.2" y1="24" x2="635.2" y2="62" stroke="#21262d" stroke-width="1"/>
