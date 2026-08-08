@@ -45,9 +45,9 @@
     "recentCount": 5,
     "rows": [
       { "id": "university" },
-      { "id": "personal" },
-      { "id": "orgs" }
+      { "id": "personal" }
     ],
+    "$rows": "There is no `orgs` row: the organisations are already two pills up and a row of their repositories under my own read as somebody else's work on my page. An automatic entry whose row is not listed here is simply dropped, so today the five automatic slots only fill when one of my own repositories is the most recently pushed — and everything of mine worth a shortcut is pinned below.",
     "pinned": [
       { "repo": "hector-ae21/CIBINT", "label": "CIBINT", "row": "university", "private": true },
       { "repo": "mmasias/TDHector", "label": "TDHector", "row": "personal", "private": true },

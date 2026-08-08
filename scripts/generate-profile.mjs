@@ -7,8 +7,8 @@
  *           registry.npmjs.org           (published versions)
  * Writes  : README.md                    (what the profile page shows)
  *           profile/pages/*.md           (one detail page per portfolio group)
- *           profile/assets/*.svg         (banner, cards, charts, nav pills, stack
- *                                         — every one in light and dark)
+ *           profile/assets/*.svg         (banner, cards, charts — each in light
+ *                                         and dark)
  *
  * Both output directories are swept at the end of a run: anything in them this
  * run did not write no longer has anything in content.json behind it, and is
@@ -53,8 +53,8 @@ const BRANCH = process.env.PROFILE_BRANCH || "main";
  * canvases the images land on rather than a reference surface:
  *   light  #0969da on #ffffff → 5.19:1  (>= 3:1 for marks, >= 4.5:1 for text)
  *   dark   #58a6ff on #0d1117 → 7.49:1
- * Both clear the text threshold, which matters because the nav pills put label
- * text on the accent rather than only drawing shapes with it.
+ * Both clear the text threshold, not only the 3:1 one for marks, because some of
+ * these images set label text on the accent rather than only drawing with it.
  */
 const THEME = {
   light: {
@@ -259,7 +259,9 @@ async function collect(content) {
 
   // Repository language, keyed by full name, for the featured cards. Taken from
   // the repository record rather than re-derived: the card states what GitHub
-  // shows on the repository itself, so the two never disagree.
+  // shows on the repository itself, so the two never disagree. Version, licence
+  // and last commit are not collected here — on the detail pages those come from
+  // shields.io, which re-reads them on every page load.
   const repoLanguage = Object.fromEntries(repos.map((r) => [r.full_name, r.language]));
 
   // The self-filling half of the launcher: what was pushed to most recently,
@@ -499,25 +501,6 @@ ${text(pad + 16, footY, language, { size: 11, weight: 600, fill: th.secondary })
 ${foot ? text(W - pad, footY, foot, { size: 11, fill: th.secondary, anchor: "end" }) : ""}`, th);
 }
 
-/* ── nav pills ──────────────────────────────────────────────────────────────
- * GitHub markdown has no button and no CSS, so a link bar is a row of images,
- * each wrapped in its own anchor. Drawing them here rather than pulling badges
- * from shields.io keeps the bar on the same palette as the charts, costs the
- * reader no third-party request, and cannot break when that service is down.
- * Solid for the portfolio sections (the primary route into the site), outlined
- * for links that leave it. */
-function pill(label, variant, mode) {
-  const th = THEME[mode];
-  const size = 12, H = 30, padX = 15;
-  const W = Math.round(width(label, size) + padX * 2);
-  const solid = variant === "solid";
-  const box = solid
-    ? `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="7" fill="${th.brand}"/>`
-    : `<rect x="0.5" y="0.5" width="${W - 1}" height="${H - 1}" rx="7" fill="${th.brandSoft}" stroke="${th.axis}" stroke-width="1"/>`;
-  return svg(W, H, `${box}
-${text(W / 2, 19.5, label, { size, weight: 600, anchor: "middle", fill: solid ? th.onBrand : th.primary })}`, th);
-}
-
 /* ── lock ───────────────────────────────────────────────────────────────────
  * Eleven pixels of padlock, set beside a link to a repository only its owner can
  * open. The one asset here drawn without a background rectangle: it sits inline
@@ -533,39 +516,6 @@ function lockIcon(mode) {
 `;
 }
 
-/* ── stack board ────────────────────────────────────────────────────────────
- * One image rather than one pill per technology: nothing here is a link, so
- * splitting it into forty files would buy nothing and cost forty requests. Laid
- * out with wrapping so a row of long names does not run off the canvas. */
-function stackBoard(stack, mode) {
-  const th = THEME[mode];
-  const W = 1060, labelW = 150, size = 12, chipH = 26, gapX = 8, gapY = 8, padX = 13;
-  const rowGap = 18;
-  let y = 4;
-  const parts = [];
-
-  for (const group of stack.groups) {
-    const startY = y;
-    let x = labelW, lines = 1;
-    const chips = [];
-    for (const item of group.items) {
-      const w = Math.round(width(item, size) + padX * 2);
-      if (x + w > W) { x = labelW; y += chipH + gapY; lines++; }
-      chips.push(`<rect x="${x}" y="${y}" width="${w}" height="${chipH}" rx="6" fill="${th.brandSoft}" stroke="${th.axis}" stroke-width="1"/>
-${text(x + w / 2, y + 17.5, item, { size, weight: 500, fill: th.primary, anchor: "middle" })}`);
-      x += w + gapX;
-    }
-    // The group label is centred against the block its chips occupy, so a
-    // two-line group does not leave its label floating at the top.
-    const blockH = lines * chipH + (lines - 1) * gapY;
-    parts.push(text(0, startY + blockH / 2 + 4, group.label.toUpperCase(),
-      { size: 10, weight: 700, fill: th.muted }));
-    parts.push(chips.join("\n"));
-    y += chipH + rowGap;
-  }
-
-  return svg(W, y - rowGap + 6, parts.join("\n"), th);
-}
 
 /* ── chart: KPI strip ───────────────────────────────────────────────────── */
 
@@ -728,27 +678,20 @@ ${picture(login, b.base, b.alt, "48%")}
 </p>`).join("\n\n");
 }
 
-/** A row of linked pill images. No whitespace between the anchors on a line
- *  would butt them together; a single space is what gives the bar its spacing,
- *  since GitHub strips any style attribute that could do it properly. */
-function navBar(login, items) {
-  return items.map((it) => {
-    const name = `nav-${slug(it.label)}`;
-    return `<a href="${it.href}"><picture><source media="(prefers-color-scheme: dark)" srcset="${RAW(login)}/${name}-dark.svg"><img alt="${esc(it.label)}" src="${RAW(login)}/${name}-light.svg" height="30"></picture></a>`;
-  }).join(" ");
-}
 
-/* ── per-project badges (shields.io) ─────────────────────────────────────
- * The one place a third-party service earns its keep: shields.io re-reads GitHub
- * and npm on every page load, so version, licence and last-commit are live
- * without this repository committing anything.
+/* ── per-project badges (shields.io) ────────────────────────────────────────
+ * The one place a third-party service earns its keep, and the one place these
+ * belong: a detail page, where somebody is deciding whether to install the
+ * thing. shields re-reads GitHub and npm on every page load, so version,
+ * licence and last commit are live without this repository committing anything.
  *
- * Used only for per-repository facts, because that is all it can do. Tested
- * 2026-08-06: github-readme-stats returned DEPLOYMENT_PAUSED,
- * github-profile-summary-cards 500, star-history 503 and contrib.rocks would not
- * connect — so every aggregate on this profile stays self-generated. shields.io's
- * dynamic-JSON badge cannot stand in either: pointed at api.github.com it renders
- * "invalid", since it calls the API unauthenticated. */
+ * Deliberately not used on the profile page. Tested 2026-08-06:
+ * github-readme-stats returned DEPLOYMENT_PAUSED, github-profile-summary-cards
+ * 500, star-history 503 and contrib.rocks would not connect — so every aggregate
+ * here stays self-generated. shields' dynamic-JSON badge cannot stand in either:
+ * pointed at api.github.com it renders "invalid", since it calls the API
+ * unauthenticated.
+ */
 const SHIELD = "https://img.shields.io";
 const STYLE = "style=flat-square&color=0969da&labelColor=1f2328";
 
@@ -766,6 +709,17 @@ function badges(p) {
   return out.join(" ");
 }
 
+/** The stack as a table rather than a drawing. The image version was one more
+ *  picture to load for something that is, in the end, a list of words — and a
+ *  drawing cannot be selected, searched or read by a screen reader. Everything
+ *  is set small: it is a reference, not a headline. */
+function stackTable(stack) {
+  const rows = stack.groups.map((g) =>
+    `<tr><td valign="top"><sub><b>${esc(g.label)}</b></sub></td><td><sub>${g.items.map((i) => `<code>${esc(i)}</code>`).join(" ")}</sub></td></tr>`
+  ).join("\n");
+  return `<table>\n${rows}\n</table>`;
+}
+
 /** Two linked cards per row. Not a table: GitHub frames every table cell, and
  *  each card already draws its own border — the two together read as a box in a
  *  box. Plain images inside a paragraph, same trick as the chart grid. */
@@ -779,54 +733,80 @@ function featuredGrid(login, projects) {
   return rows.join("\n\n");
 }
 
-/* ── quick access ───────────────────────────────────────────────────────────
- * Rows of bare repository links near the top, the way a bookmarks bar works.
- * This is the half of the page that is for its owner rather than for a visitor:
- * fifteen slots, ten of them nailed down by hand and five that reorder
- * themselves by what was pushed to last.
+/* ── the link table ─────────────────────────────────────────────────────────
+ * Everything above the fold that is a link and not a picture: the two nav rows
+ * and the launcher rows, in one table, right-aligned, one row each.
  *
- * The rows are unlabelled and separated by a rule, which is all the grouping a
- * reader needs — a heading over three links describes less than the links do.
- * Right-aligned, so the ragged ends of a link row line up instead of leaving a
- * different gap on every line.
+ * A table because the alternative is worse in both directions. Drawn pills cost
+ * an image request each and cannot wrap or be selected; paragraphs split by <hr>
+ * put a quarter-em band between every line, which is more air than the whole
+ * block is worth. A table row is separated by exactly one border pixel, drawn by
+ * GitHub in the same grey as the rule under a heading, and the rows sit tight.
  *
- * The two markers stay quiet: italic for the automatic five, a padlock for what
- * is private. Neither is explained anywhere, on purpose. A padlock needs no
- * caption, and this block is for the person who already knows.
+ * The banner is the first row rather than a picture above the table, and that is
+ * load-bearing: GitHub lays tables out at `width: max-content`, so a table of
+ * short link rows shrinks to hug them and "right-aligned" stops meaning anything.
+ * A full-width image in the first cell is what stretches the box to the column.
+ *
+ * The launcher half is for the owner rather than a visitor: fifteen slots, ten
+ * pinned by hand and five that reorder themselves by what was pushed to last.
+ * Its two markers stay quiet and unexplained on purpose — italic for the
+ * automatic five, a padlock for what is private. A padlock needs no caption, and
+ * this block is for the person who already knows.
  */
-function quickAccess(content, data, login) {
-  const q = content.quickAccess;
-  if (!q) return "";
+function linkTable(content, data, login, banner) {
+  const q = content.quickAccess || {};
+  const lock = `<picture><source media="(prefers-color-scheme: dark)" srcset="${RAW(login)}/lock-dark.svg"><img alt="private" src="${RAW(login)}/lock-light.svg" height="11"></picture>`;
 
   const pinned = (q.pinned || []).slice(0, q.maxPinned ?? 10);
   if ((q.pinned || []).length > pinned.length) {
     warn(`quickAccess.pinned holds ${q.pinned.length} entries but maxPinned is ${q.maxPinned} — the rest are not shown`);
   }
 
-  const lock = `<picture><source media="(prefers-color-scheme: dark)" srcset="${RAW(login)}/lock-dark.svg"><img alt="private" src="${RAW(login)}/lock-light.svg" height="11"></picture>`;
-
   const items = [
     ...pinned.map((p) => ({ ...p, label: p.label || p.repo.split("/")[1] })),
     // An automatic entry lands in a row by who owns it, since that is the only
-    // thing about it this side knows: mine goes under Personal, anything else
-    // under Organisations. Those keep the owner in the label — two accounts here
-    // both have a repository whose bare name says nothing about whose it is.
+    // thing about it this side knows: mine under `personal`, anything else under
+    // `orgs`. Those keep the owner in the label — two accounts here both have a
+    // repository whose bare name says nothing about whose it is.
     ...(data.recent || []).map((r) => {
       const mine = r.owner.toLowerCase() === login.toLowerCase();
       return { repo: r.repo, label: mine ? r.label : r.repo, row: mine ? "personal" : "orgs", recent: true };
     }),
   ];
 
-  const rows = (q.rows || []).map((row) => {
-    const links = items.filter((i) => i.row === row.id).map((i) => {
-      const name = i.recent ? `<em>${esc(i.label)}</em>` : esc(i.label);
-      return `<a href="https://github.com/${i.repo}">${name}</a>${i.private ? ` ${lock}` : ""}`;
-    });
-    // An empty row is dropped rather than left as a rule with nothing under it.
-    return links.length ? `<p align="right">${links.join(" / ")}</p>` : null;
-  }).filter(Boolean);
+  // A pinned entry pointing at a row that does not exist is a typo and worth
+  // saying so. An automatic one is not: deleting a row is how you say "I do not
+  // want those here", and the run should not complain about being obeyed.
+  const ids = new Set((q.rows || []).map((r) => r.id));
+  const lost = items.filter((i) => !i.recent && !ids.has(i.row));
+  if (lost.length) warn(`quickAccess row missing for: ${lost.map((i) => `${i.repo} (${i.row})`).join(", ")}`);
 
-  return rows.length ? `<hr>\n${rows.join("\n<hr>\n")}\n<hr>` : "";
+  // Where you can go from here, and what is mine. Two different things, so they
+  // are punctuated differently: a middot for navigation, a slash for
+  // repositories, the way a path is written. The two navigation rows share one
+  // cell — they are the same kind of link and a border between them would say
+  // they are not.
+  const nav = [
+    content.nav.sections.map((s) => `<a href="${PAGE(login, s.to)}">${esc(s.label)}</a>`).join(" · "),
+    content.nav.elsewhere.map((e) => `<a href="${e.href}">${esc(e.label)}</a>`).join(" · "),
+  ].filter(Boolean).join("<br>");
+
+  const repos = (q.rows || []).map((row) => items.filter((i) => i.row === row.id).map((i) => {
+    const name = i.recent ? `<em>${esc(i.label)}</em>` : esc(i.label);
+    // Lock first: it qualifies the link that follows, and trailing it would put
+    // the mark where the next separator goes.
+    return `${i.private ? `${lock} ` : ""}<a href="https://github.com/${i.repo}">${name}</a>`;
+  }).join(" / ")).filter(Boolean);
+
+  // Everything set small. This is the index, not the page: it should be legible
+  // and stay out of the way of the first thing anyone actually reads.
+  const cell = (html) => `<tr><td align="right"><sub>${html}</sub></td></tr>`;
+
+  return `<table width="100%">
+<tr><td>${banner}</td></tr>
+${[nav, ...repos].filter(Boolean).map(cell).join("\n")}
+</table>`;
 }
 
 /** One line under the cards pointing at the full listings. The nav pills at the
@@ -838,22 +818,20 @@ function moreLine(content, login) {
   return `<sub>${esc(content.copy.featured.more)}: ${links.join(" · ")}</sub>`;
 }
 
-function renderPage(content, group, login) {
+function renderPage(content, group, login, data) {
   const c = content.copy.portfolio;
   const stamp = new Date().toISOString().slice(0, 10);
   const items = content.projects.filter((p) => p.group === group.id);
 
   const body = items.map((p) => {
     const href = `https://github.com/${p.repo}`;
-    const heading = `<h2><a href="${href}">${esc(p.name)}</a></h2>`;
-    const meta = p.role;
     const badgeRow = badges(p);
     const install = p.npm ? `\n\`\`\`bash\nnpm install ${p.npm}\n\`\`\`\n` : "";
     const tech = p.tech.length
       ? `\n<p><sub>${p.tech.map((t) => `<code>${esc(t)}</code>`).join(" ")}</sub></p>\n` : "";
-    return `${heading}
+    return `<h2><a href="${href}">${esc(p.name)}</a></h2>
 
-<p><sub><b>${esc(meta)}</b></sub></p>
+<p><sub><b>${esc(p.role)}</b></sub></p>
 ${badgeRow ? `\n<p>${badgeRow}</p>\n` : ""}
 ${esc(p.desc)}
 ${install}${tech}
@@ -881,8 +859,6 @@ ${body || "_No data yet_"}
 function renderStackPage(content, login) {
   const c = content.copy.portfolio;
   const stamp = new Date().toISOString().slice(0, 10);
-  const rows = content.stack.groups.map((g) =>
-    `| **${esc(g.label)}** | ${g.items.map((i) => `\`${esc(i)}\``).join(" · ")} |`).join("\n");
 
   return `<!--
   GENERATED FILE — DO NOT EDIT.
@@ -895,11 +871,7 @@ function renderStackPage(content, login) {
 Everything listed here is in a repository in this account or one I contribute to.
 Nothing is here because I read about it once.
 
-| | |
-|---|---|
-${rows}
-
-${picture(login, "stack", "Stack")}
+${stackTable(content.stack)}
 
 <sub><a href="https://github.com/${login}">← ${c.back}</a></sub>
 `;
@@ -910,11 +882,6 @@ function renderReadme(content, data) {
   const c = content.copy;
   const stamp = new Date().toISOString().slice(0, 10);
   const featured = content.projects.filter((p) => p.featured);
-
-  const sections = content.nav.sections.map((s) => ({
-    label: s.label,
-    href: s.to === "stack" ? PAGE(login, "stack") : PAGE(login, s.to),
-  }));
 
   const grid = chartGrid(login, [
     [{ base: "languages", alt: c.metrics.languages }, { base: "peryear", alt: c.metrics.peryear }],
@@ -932,13 +899,7 @@ function renderReadme(content, data) {
   Last generated: ${stamp}
 -->
 
-${picture(login, "banner", bannerAlt)}
-
-<p align="center">${navBar(login, sections)}</p>
-
-<p align="center">${navBar(login, content.nav.elsewhere)}</p>
-
-${quickAccess(content, data, login)}
+${linkTable(content, data, login, picture(login, "banner", bannerAlt))}
 
 ${picture(login, "stats", "Profile statistics")}
 
@@ -964,7 +925,7 @@ ${picture(login, "activity", c.metrics.activity)}
 
 ## ${content.stack.heading}
 
-${picture(login, "stack", "Stack")}
+${stackTable(content.stack)}
 
 ---
 
@@ -1041,13 +1002,10 @@ async function main() {
       await writeFile(join(target, file), c, "utf8");
     };
 
-    for (const it of content.nav.sections) await w(`nav-${slug(it.label)}`, pill(it.label, "solid", mode));
-    for (const it of content.nav.elsewhere) await w(`nav-${slug(it.label)}`, pill(it.label, "ghost", mode));
     for (const p of featured) await w(`card-${slug(p.name)}`, repoCard(p, data, mode, featuredLines));
 
     await w("banner", banner(content, mode));
     await w("lock", lockIcon(mode));
-    await w("stack", stackBoard(content.stack, mode));
     await w("stats", kpiStrip(data, mode));
 
     const m = content.copy.metrics;
@@ -1071,7 +1029,7 @@ async function main() {
   await writeFile(join(ROOT, "README.md"), renderReadme(content, data), "utf8");
   for (const group of content.groups) {
     pages.add(`${group.id}.md`);
-    await writeFile(join(PAGES, `${group.id}.md`), renderPage(content, group, content.user.login), "utf8");
+    await writeFile(join(PAGES, `${group.id}.md`), renderPage(content, group, content.user.login, data), "utf8");
   }
   await writeFile(join(PAGES, "stack.md"), renderStackPage(content, content.user.login), "utf8");
 
