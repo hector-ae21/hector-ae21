@@ -166,6 +166,8 @@
     "metrics": {
       "heading": "Code and commits",
       "note": "Every figure here counts <b>my own</b> commits, never a repository's totals, across the public repositories I own and the ones I contribute to. Recomputed daily by a job in this repository — no third-party service involved.",
+      "installs": "Installs, last 30 days",
+      "installsNote": "Downloads reported by the npm registry for the last 30 days. Counted per package, and it counts machines rather than people — a CI pipeline installing on every build is in there too.",
       "languages": "Code by language",
       "peryear": "My commits by year",
       "perrepo": "My commits by repository",

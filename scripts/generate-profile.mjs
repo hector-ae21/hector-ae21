@@ -259,6 +259,12 @@ async function collect(content) {
     packages.push({ name: p.npm, version, downloads: await npmDownloads(p.npm) });
   }
 
+  // Merged pull requests, across everything GitHub can see — the one figure here
+  // that measures work landing somewhere rather than work happening. Authored
+  // would be the flattering number; merged is the one that means something.
+  const prs = await api(`/search/issues?q=${encodeURIComponent(`type:pr author:${login} is:merged`)}&per_page=1`);
+  const prsMerged = prs?.total_count ?? 0;
+
   // The self-filling half of the launcher: what was pushed to most recently,
   // minus anything already pinned by hand and anything on the exclude list.
   // `pushed_at` rather than commit dates on purpose — the question this answers
@@ -273,7 +279,7 @@ async function collect(content) {
     .map((r) => ({ repo: r.full_name, label: r.name, owner: r.owner.login }));
 
   return {
-    login, user, repos, packages, recent,
+    login, user, repos, packages, recent, prsMerged,
     downloads30d: packages.reduce((s, p) => s + (p.downloads || 0), 0),
     commitsTotal: mine,
     commits12mo: timeline.reduce((s, w) => s + w.total, 0),
@@ -437,22 +443,19 @@ function lockIcon(mode) {
 
 /* ── chart: KPI strip ───────────────────────────────────────────────────── */
 
-function kpiStrip(data, mode) {
+/** `tiles` is [count, label] pairs. A zero is dropped rather than drawn: a tile
+ *  reading 0 spends the same space as a real figure to say nothing happened, and
+ *  the strip should be a summary, not a scorecard with gaps in it. */
+function kpiStrip(tiles, mode) {
   const th = THEME[mode];
-  const tiles = [
-    [fmt(data.repos.length), "Repositories"],
-    [fmt(data.orgs), "Organisations"],
-    [fmt(data.packages.length), "Packages"],
-    [fmt(data.downloads30d || 0), "Installs · 30 days"],
-    [fmt(data.commits12mo), "My commits · 12 mo"],
-    [fmt(data.commitsTotal), "My commits · total"],
-  ];
+  const shown = tiles.filter(([value]) => value > 0);
   // H must clear the tallest glyph plus the label: the value sits on a baseline
   // at y=50 with a 34px face and the label baseline at y=72, so anything under
   // ~86 clips the numbers top and bottom.
-  const W = 1060, H = 86, pad = 4, cw = (W - pad * 2) / tiles.length;
+  const W = 1060, H = 86, pad = 4, cw = (W - pad * 2) / (shown.length || 1);
 
-  const body = tiles.map(([value, label], i) => {
+  const body = shown.map(([count, label], i) => {
+    const value = fmt(count);
     const cx = pad + cw * i + cw / 2;
     const divider = i === 0 ? ""
       : `<line x1="${pad + cw * i}" y1="24" x2="${pad + cw * i}" y2="${H - 24}" stroke="${th.grid}" stroke-width="1"/>`;
@@ -712,10 +715,24 @@ ${repos.map((r) => `<tr><td align="right"><sub>${r}</sub></td></tr>`).join("\n")
 </table>`;
 }
 
+/** Monthly installs per package in a group, biggest first. Empty when the group
+ *  has fewer than two published packages, which is how the caller decides
+ *  whether the chart exists at all: a page of Moodle plugins has no npm figures
+ *  to draw, and a ranked bar chart of one bar ranks nothing. */
+function installsFor(content, data, groupId) {
+  const items = content.projects
+    .filter((p) => p.group === groupId && p.npm)
+    .map((p) => ({ name: p.npm, value: data.packages.find((x) => x.name === p.npm)?.downloads || 0 }))
+    .filter((p) => p.value > 0)
+    .sort((a, b) => b.value - a.value);
+  return items.length > 1 ? items : [];
+}
+
 function renderPage(content, group, login, data) {
   const c = content.copy.portfolio;
   const stamp = new Date().toISOString().slice(0, 10);
   const items = content.projects.filter((p) => p.group === group.id);
+  const installs = installsFor(content, data, group.id);
 
   const body = items.map((p) => {
     const href = `https://github.com/${p.repo}`;
@@ -741,7 +758,11 @@ ${install}${tech}
 # ${esc(group.label)}
 
 ${esc(group.page)}
+${installs.length ? `
+${picture(login, "installs", content.copy.metrics.installs, "100%", `pages/${group.id}`)}
 
+<sub>${content.copy.metrics.installsNote}</sub>
+` : ""}
 ---
 
 ${body || "_No data yet_"}
@@ -888,7 +909,25 @@ async function main() {
 
     await w("banner", banner(content, mode));
     await w("lock", lockIcon(mode));
-    await w("stats", kpiStrip(data, mode));
+    // The profile strip is GitHub only. npm belongs to the packages page, where
+    // the reader is looking at packages; up here it would be one registry's
+    // numbers standing in a row of this site's.
+    await w("stats", kpiStrip([
+      [data.repos.length, "Repositories"],
+      [data.orgs, "Organisations"],
+      [data.prsMerged, "Merged pull requests"],
+      [data.commits12mo, "My commits · 12 mo"],
+      [data.commitsTotal, "My commits · total"],
+    ], mode));
+
+    for (const g of content.groups) {
+      const installs = installsFor(content, data, g.id);
+      if (installs.length) {
+        await w("installs", barRows(installs, mode, {
+          unit: "count", title: content.copy.metrics.installs, width: 1060, labelPct: 0.34,
+        }), `pages/${g.id}`);
+      }
+    }
 
     const m = content.copy.metrics;
     // Each grid row is rendered at a shared height so the two tiles line up.

@@ -8,6 +8,13 @@
 
 Libraries I publish and maintain on npm. Each one came out of a real service that needed it twice.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/pages/packages/installs-dark.svg">
+  <img alt="Installs, last 30 days" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/pages/packages/installs-light.svg" width="100%">
+</picture>
+
+<sub>Downloads reported by the npm registry for the last 30 days. Counted per package, and it counts machines rather than people — a CI pipeline installing on every build is in there too.</sub>
+
 ---
 
 <h2><a href="https://github.com/resilientmq/core">@resilientmq/core</a></h2>

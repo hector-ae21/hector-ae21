@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="152" viewBox="0 0 1060 152" role="img">
+<rect width="1060" height="152" fill="#0d1117"/>
+<g transform="translate(0,0)">
+<text x="0" y="16" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="12" font-weight="700" fill="#f0f6fc" text-anchor="start">Installs, last 30 days</text>
+<text x="0" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">@resilientmq/core</text>
+<rect x="360" y="34" width="573" height="11" rx="5" fill="#21262d"/>
+<rect x="360" y="34" width="573.0" height="11" rx="5" fill="#58a6ff"/>
+<text x="1060" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">2k</text>
+<text x="0" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">@didactika/prisma-autoread</text>
+<rect x="360" y="62" width="573" height="11" rx="5" fill="#21262d"/>
+<rect x="360" y="62" width="181.6" height="11" rx="5" fill="#58a6ff"/>
+<text x="1060" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">621</text>
+<text x="0" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">http-response-client</text>
+<rect x="360" y="90" width="573" height="11" rx="5" fill="#21262d"/>
+<rect x="360" y="90" width="57.6" height="11" rx="5" fill="#58a6ff"/>
+<text x="1060" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">197</text>
+<text x="0" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">@resilientmq/mongoose-connector</text>
+<rect x="360" y="118" width="573" height="11" rx="5" fill="#21262d"/>
+<rect x="360" y="118" width="6.7" height="11" rx="5" fill="#58a6ff"/>
+<text x="1060" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">23</text>
+</g>
+</svg>
