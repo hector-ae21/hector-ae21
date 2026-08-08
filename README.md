@@ -24,11 +24,8 @@
 ## About
 
 - Computer engineer, five years building software. Degree at Universidad Europea del Atlántico, master's in cybersecurity at UNIR.
-- Backend and event-driven systems: queues, retries, and the integrations that hold a university's systems together.
 - I would rather learn a job by doing it than by reading about it, and I go looking for the problems that did not work the first time.
-- At my best where an idea can be tried instead of argued about.
-- Happy to lead a project when it needs someone to, and happier still with people around to do it with.
-- There is a life outside this. When the two collide I finish what I owe first.
+- I work best with people around and where an idea can be tried instead of argued about. Happy to lead when a project needs someone to.
 
 ## Code and commits
 
