@@ -18,23 +18,23 @@
 <text x="0" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">TypeScript</text>
 <rect x="135" y="34" width="323" height="11" rx="5" fill="#21262d"/>
 <rect class="bar" style="--d:0.00s" x="135" y="34" width="323.0" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.00s"><text x="520" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">69.3%</text></g>
+<g class="fade" style="--d:0.00s"><text x="520" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">70.6%</text></g>
 <text x="0" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">PHP</text>
 <rect x="135" y="62" width="323" height="11" rx="5" fill="#21262d"/>
 <rect class="bar" style="--d:0.07s" x="135" y="62" width="60.4" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.07s"><text x="520" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">13.0%</text></g>
+<g class="fade" style="--d:0.07s"><text x="520" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">13.2%</text></g>
 <text x="0" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">JavaScript</text>
 <rect x="135" y="90" width="323" height="11" rx="5" fill="#21262d"/>
-<rect class="bar" style="--d:0.14s" x="135" y="90" width="44.4" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.14s"><text x="520" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">9.5%</text></g>
+<rect class="bar" style="--d:0.14s" x="135" y="90" width="36.0" height="11" rx="5" fill="#58a6ff"/>
+<g class="fade" style="--d:0.14s"><text x="520" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">7.9%</text></g>
 <text x="0" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">Mustache</text>
 <rect x="135" y="118" width="323" height="11" rx="5" fill="#21262d"/>
 <rect class="bar" style="--d:0.21s" x="135" y="118" width="20.1" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.21s"><text x="520" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">4.3%</text></g>
+<g class="fade" style="--d:0.21s"><text x="520" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">4.4%</text></g>
 <text x="0" y="155.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">Java</text>
 <rect x="135" y="146" width="323" height="11" rx="5" fill="#21262d"/>
 <rect class="bar" style="--d:0.28s" x="135" y="146" width="13.2" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.28s"><text x="520" y="155.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">2.8%</text></g>
+<g class="fade" style="--d:0.28s"><text x="520" y="155.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">2.9%</text></g>
 <text x="0" y="183.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">Other</text>
 <rect x="135" y="174" width="323" height="11" rx="5" fill="#21262d"/>
 <rect class="bar" style="--d:0.35s" x="135" y="174" width="4.8" height="11" rx="5" fill="#58a6ff"/>
