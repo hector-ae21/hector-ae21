@@ -37,7 +37,7 @@
 <g class="fade" style="--d:0.28s"><text x="520" y="155.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">28</text></g>
 <text x="0" y="183.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">Other</text>
 <rect x="239" y="174" width="219" height="11" rx="5" fill="#21262d"/>
-<rect class="bar" style="--d:0.35s" x="239" y="174" width="118.5" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.35s"><text x="520" y="183.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">59</text></g>
+<rect class="bar" style="--d:0.35s" x="239" y="174" width="158.7" height="11" rx="5" fill="#58a6ff"/>
+<g class="fade" style="--d:0.35s"><text x="520" y="183.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">79</text></g>
 </g>
 </svg>
