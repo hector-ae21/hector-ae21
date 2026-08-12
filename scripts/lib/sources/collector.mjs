@@ -35,10 +35,12 @@ export class ProfileCollector {
     const login = profile.login;
     this.#log.step(`Fetching ${login} …`);
 
-    const repos = await this.#repositories(profile);
-    this.#log.detail(`${repos.length} public repositories tracked`);
+    const candidates = await this.#repositories(profile);
+    this.#log.detail(`${candidates.length} public repository candidates discovered`);
 
-    const totals = await this.#walkRepositories(repos, login);
+    const totals = await this.#walkRepositories(candidates, login);
+    const repos = totals.repos;
+    this.#log.detail(`${repos.length} repositories with attributed commits`);
     const timeline = this.#timeline(totals.weeks);
     const packages = await this.#packages(profile);
 
@@ -114,6 +116,7 @@ export class ProfileCollector {
     const perRepo = new Map();    // repo      → this user's commits
     const weeks = new Map();      // week (ts) → this user's commits
     const owners = new Set();     // accounts this user has actually committed to
+    const contributedRepos = [];  // candidates with at least one attributed commit
     let mine = 0;
 
     for (const repo of repos) {
@@ -124,6 +127,7 @@ export class ProfileCollector {
       const myTotal = me?.total || 0;
 
       if (myTotal > 0) {
+        contributedRepos.push(repo);
         mine += myTotal;
         // Qualified with the owner for anything not in this account: on its own,
         // a row reading "core" says nothing about whose core it is.
@@ -152,7 +156,7 @@ export class ProfileCollector {
       this.#log.detail(`· ${repo.full_name} — ${myTotal} of ${repoTotal} commits`);
     }
 
-    return { languages, perRepo, weeks, owners, mine };
+    return { repos: contributedRepos, languages, perRepo, weeks, owners, mine };
   }
 
   /**

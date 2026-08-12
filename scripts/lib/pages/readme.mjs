@@ -70,9 +70,12 @@ ${this.#footer(c)}
 
   #roles(roles = []) {
     if (!roles.length) return "";
-    return roles
-      .map(({ role, name, url }) => `**${escapeXml(role)}:** [${escapeXml(name)}](${url})`)
-      .join(" · ");
+    const width = 100 / roles.length;
+    const cells = roles.map(({ role, name, url }) => `<td width="${width}%" align="center">
+<sub>${escapeXml(role)}</sub><br>
+<strong><a href="${url}">${escapeXml(name)}</a></strong>
+</td>`).join("\n");
+    return `<table width="100%">\n<tr>\n${cells}\n</tr>\n</table>`;
   }
 
   #footer(c) {
