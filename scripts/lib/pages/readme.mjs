@@ -46,8 +46,6 @@ ${this.header.render(this.links.picture("banner", p.bannerAlt))}
 
 ${p.about.points.map((point) => `- ${point}`).join("\n")}
 
-${this.#roles(p.about.roles)}
-
 ## ${c.metrics.heading}
 
 ${this.links.picture("stats", "Profile statistics")}
@@ -66,16 +64,6 @@ ${StackTable.render(p.stack)}
 
 ${this.#footer(c)}
 `;
-  }
-
-  #roles(roles = []) {
-    if (!roles.length) return "";
-    const width = 100 / roles.length;
-    const cells = roles.map(({ role, name, url }) => `<td width="${width}%" align="center">
-<sub>${escapeXml(role)}</sub><br>
-<strong><a href="${url}">${escapeXml(name)}</a></strong>
-</td>`).join("\n");
-    return `<table width="100%">\n<tr>\n${cells}\n</tr>\n</table>`;
   }
 
   #footer(c) {
