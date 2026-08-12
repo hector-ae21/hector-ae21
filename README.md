@@ -13,7 +13,7 @@
   <img alt="What I work on: backend, packages, data, security, moodle, research" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/banner-light.svg" width="100%">
 </picture><br><sub><a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/packages.md">Packages</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/moodle.md">Moodle</a> · <a href="https://github.com/hector-ae21/hector-ae21/blob/main/profile/pages/stack.md">Stack</a></sub></td></tr>
 <tr><td align="right"><sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="10"></picture> <a href="https://github.com/hector-ae21/CIBINT">CIBINT</a></sub></td></tr>
-<tr><td align="right"><sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="10"></picture> <a href="https://github.com/mmasias/TDHector">TDHector</a> / <a href="https://github.com/hector-ae21/http-response-client">http-response-client</a> / <a href="https://github.com/hector-ae21/moodle-local_digitalta">digitalta-plugin</a> / <a href="https://github.com/hector-ae21/moodle-theme_digitalta">digitalta-theme</a> / <a href="https://github.com/hector-ae21/Cache-Db">Cache-Db</a> / <a href="https://github.com/hector-ae21/hector-ae21"><em>hector-ae21</em></a></sub></td></tr>
+<tr><td align="right"><sub><picture><source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-dark.svg"><img alt="private" src="https://raw.githubusercontent.com/hector-ae21/hector-ae21/main/profile/assets/lock-light.svg" height="10"></picture> <a href="https://github.com/mmasias/TDHector">TDHector</a> / <a href="https://github.com/hector-ae21/http-response-client">http-response-client</a> / <a href="https://github.com/hector-ae21/moodle-local_digitalta">digitalta-plugin</a> / <a href="https://github.com/hector-ae21/moodle-theme_digitalta">digitalta-theme</a> / <a href="https://github.com/hector-ae21/octoform">octoform</a></sub></td></tr>
 </table>
 
 ## About
@@ -22,7 +22,18 @@
 - I would rather learn a job by doing it than by reading about it, and I go looking for the problems that did not work the first time.
 - I work best with people around and where an idea can be tried instead of argued about. Happy to lead when a project needs someone to.
 
-**Co-Founder:** [Didactika](https://github.com/didactika) · **Founder:** [ResilientMQ](https://github.com/resilientmq)
+<table width="100%">
+<tr>
+<td width="50%" align="center">
+<sub>Co-Founder</sub><br>
+<strong><a href="https://github.com/didactika">Didactika</a></strong>
+</td>
+<td width="50%" align="center">
+<sub>Founder</sub><br>
+<strong><a href="https://github.com/resilientmq">ResilientMQ</a></strong>
+</td>
+</tr>
+</table>
 
 ## Code and commits
 

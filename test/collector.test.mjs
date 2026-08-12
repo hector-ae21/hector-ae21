@@ -20,6 +20,7 @@ function repository(fullName, pushedAt) {
 test("discovers every public repository with attributed commits", async () => {
   const own = repository(`${LOGIN}/http-response-client`, "2026-07-01T00:00:00Z");
   const contributed = repository("didactika/prisma-entity", "2026-08-01T00:00:00Z");
+  const generatedProfile = repository(`${LOGIN}/${LOGIN}`, "2026-08-12T00:00:00Z");
   const calls = [];
 
   const github = {
@@ -32,17 +33,20 @@ test("discovers every public repository with attributed commits", async () => {
             { repository: own },
             { repository: contributed },
             { repository: contributed },
+            { repository: generatedProfile },
           ],
         };
       }
       if (path === `/repos/${own.full_name}`) return own;
       if (path === `/repos/${contributed.full_name}`) return contributed;
+      if (path === `/repos/${generatedProfile.full_name}`) return generatedProfile;
       if (path === `/repos/${own.full_name}/stats/contributors`) {
         return [{ author: { login: LOGIN }, total: 20, weeks: [] }];
       }
       if (path === `/repos/${contributed.full_name}/stats/contributors`) {
         return [{ author: { login: LOGIN }, total: 120, weeks: [] }];
       }
+      if (path === `/repos/${generatedProfile.full_name}/stats/contributors`) return [];
       if (path.endsWith("/languages")) return { TypeScript: 1000 };
       if (path.startsWith("/search/issues?")) return { total_count: 7 };
       throw new Error(`Unexpected GitHub request: ${path}`);
@@ -60,7 +64,8 @@ test("discovers every public repository with attributed commits", async () => {
     quickAccess: { pinned: [], exclude: [], recentCount: 5 },
   });
 
-  assert.equal(data.repos.length, 2, "duplicate search results are collapsed");
+  assert.equal(data.repos.length, 2, "duplicates and repositories with no attributed commits are dropped");
+  assert.ok(!data.repos.some((repo) => repo.full_name === generatedProfile.full_name));
   assert.equal(data.commitsTotal, 140);
   assert.deepEqual(data.perRepo, [
     { name: "didactika/prisma-entity", value: 120 },

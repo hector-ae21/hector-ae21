@@ -49,10 +49,14 @@
       { "repo": "hector-ae21/http-response-client", "row": "personal" },
       { "repo": "hector-ae21/moodle-local_digitalta", "label": "digitalta-plugin", "row": "personal" },
       { "repo": "hector-ae21/moodle-theme_digitalta", "label": "digitalta-theme", "row": "personal" },
-      { "repo": "hector-ae21/Cache-Db", "row": "personal" }
+      { "repo": "hector-ae21/octoform", "row": "personal" }
     ],
-    "exclude": ["didactika/.github"],
-    "$exclude": "didactika/.github is the organisation's own profile page and regenerates itself on a schedule, so it would win 'most recently pushed' every single day without anybody having worked on it."
+    "exclude": [
+      "didactika/.github",
+      "hector-ae21/hector-ae21",
+      "hector-ae21/Cache-Db"
+    ],
+    "$exclude": "Generated profile repositories are never useful launcher entries because their scheduled refreshes look like project activity. Cache-Db is intentionally replaced by the pinned Octoform project."
   },
 
   "about": {
