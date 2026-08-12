@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="550" height="208" viewBox="0 0 550 208" role="img">
-<rect width="550" height="208" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="320" viewBox="0 0 550 320" role="img">
+<rect width="550" height="320" fill="#ffffff"/>
 <style>
 @keyframes grow{from{transform:scaleX(0)}}
 @keyframes rise{from{opacity:0;transform:translateY(9px)}}
@@ -19,14 +19,14 @@
 <rect x="239" y="34" width="219" height="11" rx="5" fill="#e4e8ed"/>
 <rect class="bar" style="--d:0.00s" x="239" y="34" width="219.0" height="11" rx="5" fill="#0969da"/>
 <g class="fade" style="--d:0.00s"><text x="520" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">109</text></g>
-<text x="0" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">moodle-local_digitalta</text>
+<text x="0" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">funiber-edtech/moodle-local_digitalta</text>
 <rect x="239" y="62" width="219" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.07s" x="239" y="62" width="204.9" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.07s"><text x="520" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">102</text></g>
-<text x="0" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">moodle-theme_digitalta</text>
+<rect class="bar" style="--d:0.07s" x="239" y="62" width="200.9" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.07s"><text x="520" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">100</text></g>
+<text x="0" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">funiber-edtech/moodle-theme_digitalta</text>
 <rect x="239" y="90" width="219" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.14s" x="239" y="90" width="80.4" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.14s"><text x="520" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">40</text></g>
+<rect class="bar" style="--d:0.14s" x="239" y="90" width="82.4" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.14s"><text x="520" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">41</text></g>
 <text x="0" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">http-response-client</text>
 <rect x="239" y="118" width="219" height="11" rx="5" fill="#e4e8ed"/>
 <rect class="bar" style="--d:0.21s" x="239" y="118" width="74.3" height="11" rx="5" fill="#0969da"/>
@@ -35,9 +35,25 @@
 <rect x="239" y="146" width="219" height="11" rx="5" fill="#e4e8ed"/>
 <rect class="bar" style="--d:0.28s" x="239" y="146" width="70.3" height="11" rx="5" fill="#0969da"/>
 <g class="fade" style="--d:0.28s"><text x="520" y="155.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">35</text></g>
-<text x="0" y="183.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">Other</text>
+<text x="0" y="183.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">moodle-web-service-client</text>
 <rect x="239" y="174" width="219" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.35s" x="239" y="174" width="164.8" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.35s"><text x="520" y="183.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">82</text></g>
+<rect class="bar" style="--d:0.35s" x="239" y="174" width="58.3" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.35s"><text x="520" y="183.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">29</text></g>
+<text x="0" y="211.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">octoform</text>
+<rect x="239" y="202" width="219" height="11" rx="5" fill="#e4e8ed"/>
+<rect class="bar" style="--d:0.42s" x="239" y="202" width="44.2" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.42s"><text x="520" y="211.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">22</text></g>
+<text x="0" y="239.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">didactika/prisma-entity</text>
+<rect x="239" y="230" width="219" height="11" rx="5" fill="#e4e8ed"/>
+<rect class="bar" style="--d:0.49s" x="239" y="230" width="40.2" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.49s"><text x="520" y="239.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">20</text></g>
+<text x="0" y="267.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">didactika/.github</text>
+<rect x="239" y="258" width="219" height="11" rx="5" fill="#e4e8ed"/>
+<rect class="bar" style="--d:0.56s" x="239" y="258" width="38.2" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.56s"><text x="520" y="267.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">19</text></g>
+<text x="0" y="295.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">Other</text>
+<rect x="239" y="286" width="219" height="11" rx="5" fill="#e4e8ed"/>
+<rect class="bar" style="--d:0.63s" x="239" y="286" width="204.9" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.63s"><text x="520" y="295.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">102</text></g>
 </g>
 </svg>

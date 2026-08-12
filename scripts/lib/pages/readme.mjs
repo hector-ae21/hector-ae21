@@ -46,6 +46,8 @@ ${this.header.render(this.links.picture("banner", p.bannerAlt))}
 
 ${p.about.points.map((point) => `- ${point}`).join("\n")}
 
+${this.#roles(p.about.roles)}
+
 ## ${c.metrics.heading}
 
 ${this.links.picture("stats", "Profile statistics")}
@@ -64,6 +66,13 @@ ${StackTable.render(p.stack)}
 
 ${this.#footer(c)}
 `;
+  }
+
+  #roles(roles = []) {
+    if (!roles.length) return "";
+    return roles
+      .map(({ role, name, url }) => `**${escapeXml(role)}:** [${escapeXml(name)}](${url})`)
+      .join(" · ");
   }
 
   #footer(c) {

@@ -38,7 +38,6 @@ export class Profile {
   get stack() { return this.content.stack; }
   get copy() { return this.content.copy; }
   get groups() { return this.content.groups; }
-  get tracked() { return this.content.tracked; }
   get quickAccess() { return this.content.quickAccess || {}; }
 
   projectsIn(groupId) {

@@ -15,7 +15,10 @@
 
 const WEEK = 604800; // seconds
 const TIMELINE_WEEKS = 52;
-const RANK_LIMIT = 6;
+const LANGUAGE_RANK_LIMIT = 6;
+const REPOSITORY_RANK_LIMIT = 10;
+const SEARCH_PAGE_SIZE = 100;
+const SEARCH_MAX_PAGES = 10;
 
 export class ProfileCollector {
   #github;
@@ -60,30 +63,50 @@ export class ProfileCollector {
       // org says nothing, having written some of its code does.
       orgs: [...totals.owners].filter((o) => o !== login.toLowerCase()).length,
       timeline,
-      languages: this.#rank(totals.languages, RANK_LIMIT),
-      perRepo: this.#rank(totals.perRepo, RANK_LIMIT),
+      languages: this.#rank(totals.languages, LANGUAGE_RANK_LIMIT),
+      perRepo: this.#rank(totals.perRepo, REPOSITORY_RANK_LIMIT),
     };
   }
 
-  /** Everything the charts are allowed to see: repositories this account owns,
-   *  plus the ones it contributes to but does not own, which the API will not
-   *  volunteer. */
+  /** Discover every public repository GitHub attributes a commit to this user.
+   *  Search only chooses candidates; /stats/contributors below remains the
+   *  source of truth for the actual figures. */
   async #repositories(profile) {
     const login = profile.login;
-    const owned = ((await this.#github.get(`/users/${login}/repos?per_page=100&type=owner`)) || [])
-      .filter((r) => !r.archived && !profile.tracked.excludeOwned.includes(r.name));
+    const query = encodeURIComponent(`author:${login} is:public`);
+    const names = new Set();
+    let reportedTotal = 0;
 
-    // Forks are kept deliberately: three of them (the Moodle plugins and theme)
-    // are where the actual work happened. What stops them distorting the
-    // language chart is the commit-share weighting below, not exclusion.
-    const extra = [];
-    for (const full of profile.tracked.contributions) {
-      const repo = await this.#github.get(`/repos/${full}`);
-      if (repo && !repo.private) extra.push(repo);
-      else this.#log.warn(`${full} is unreadable or private — dropped from the charts`);
+    for (let page = 1; page <= SEARCH_MAX_PAGES; page += 1) {
+      const result = await this.#github.get(
+        `/search/commits?q=${query}&sort=committer-date&order=desc&per_page=${SEARCH_PAGE_SIZE}&page=${page}`
+      );
+      const items = Array.isArray(result?.items) ? result.items : [];
+      reportedTotal = Math.max(reportedTotal, result?.total_count || 0);
+
+      for (const item of items) {
+        if (item.repository?.full_name && !item.repository.private) {
+          names.add(item.repository.full_name);
+        }
+      }
+
+      if (items.length < SEARCH_PAGE_SIZE) break;
     }
 
-    return [...owned, ...extra];
+    if (reportedTotal > SEARCH_PAGE_SIZE * SEARCH_MAX_PAGES) {
+      this.#log.warn(
+        `GitHub found ${reportedTotal} public commits, but Commit Search exposes at most ${SEARCH_PAGE_SIZE * SEARCH_MAX_PAGES}; older repositories may be missing`
+      );
+    }
+
+    const repos = [];
+    for (const fullName of names) {
+      const repo = await this.#github.get(`/repos/${fullName}`);
+      if (repo && !repo.private) repos.push(repo);
+      else this.#log.warn(`${fullName} is unreadable or private — dropped from the charts`);
+    }
+
+    return repos;
   }
 
   async #walkRepositories(repos, login) {
