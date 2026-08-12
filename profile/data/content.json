@@ -62,6 +62,10 @@
       "Computer engineer, five years building software. Degree at Universidad Europea del Atlántico, master's in cybersecurity at UNIR.",
       "I would rather learn a job by doing it than by reading about it, and I go looking for the problems that did not work the first time.",
       "I work best with people around and where an idea can be tried instead of argued about. Happy to lead when a project needs someone to."
+    ],
+    "roles": [
+      { "role": "Co-Founder", "name": "Didactika", "url": "https://github.com/didactika" },
+      { "role": "Founder", "name": "ResilientMQ", "url": "https://github.com/resilientmq" }
     ]
   },
 
@@ -173,31 +177,5 @@
       "activity": "My weekly commits, last 52 weeks"
     },
     "footer": "Built to be rebuilt: this page regenerates itself."
-  },
-
-  "tracked": {
-    "$comment": "Public repositories that feed the charts. `owned` is discovered from the API; list here the ones I contribute to but do not own. Private repositories are deliberately absent — the Actions token cannot read them, and a chart that silently drops half the data is worse than a smaller honest one.",
-    "contributions": [
-      "resilientmq/core",
-      "resilientmq/mongoose-connector",
-      "resilientmq/types__core",
-      "resilientmq/types__mongoose-connector",
-      "didactika/moodle-client",
-      "didactika/prisma-autoread",
-      "didactika/.github"
-    ],
-    "excludeOwned": [
-      "hector-ae21",
-      "entrega2-svelte",
-      "entrega2-vue",
-      "Progra-Web-II",
-      "The-Cat-World",
-      "IdSw1-22-23",
-      "IdSw2-22-23",
-      "Programacion-I",
-      "Hal-Ts",
-      "moodle-mod_scheduler"
-    ],
-    "$excluded": "Hal-Ts and moodle-mod_scheduler are excluded because the API attributes zero commits here to this account: Hal-Ts is Nicolás Calvache's package (NullTrisp/Hal-Ts, published by `trisp`) and moodle-mod_scheduler is a fork of Henning Bostelmann's plugin. Counting either in a 'Repositories' tile would be a claim the same API contradicts."
   }
 }
