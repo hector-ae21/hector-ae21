@@ -18,15 +18,15 @@
 <text x="0" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">TypeScript</text>
 <rect x="135" y="34" width="323" height="11" rx="5" fill="#21262d"/>
 <rect class="bar" style="--d:0.00s" x="135" y="34" width="323.0" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.00s"><text x="520" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">62.8%</text></g>
+<g class="fade" style="--d:0.00s"><text x="520" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">62.4%</text></g>
 <text x="0" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">PHP</text>
 <rect x="135" y="62" width="323" height="11" rx="5" fill="#21262d"/>
 <rect class="bar" style="--d:0.07s" x="135" y="62" width="103.9" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.07s"><text x="520" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">20.2%</text></g>
+<g class="fade" style="--d:0.07s"><text x="520" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">20.1%</text></g>
 <text x="0" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">JavaScript</text>
 <rect x="135" y="90" width="323" height="11" rx="5" fill="#21262d"/>
-<rect class="bar" style="--d:0.14s" x="135" y="90" width="52.4" height="11" rx="5" fill="#58a6ff"/>
-<g class="fade" style="--d:0.14s"><text x="520" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">10.2%</text></g>
+<rect class="bar" style="--d:0.14s" x="135" y="90" width="55.1" height="11" rx="5" fill="#58a6ff"/>
+<g class="fade" style="--d:0.14s"><text x="520" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#9198a1" text-anchor="end">10.7%</text></g>
 <text x="0" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#f0f6fc" text-anchor="start">Mustache</text>
 <rect x="135" y="118" width="323" height="11" rx="5" fill="#21262d"/>
 <rect class="bar" style="--d:0.21s" x="135" y="118" width="19.5" height="11" rx="5" fill="#58a6ff"/>
