@@ -34,12 +34,13 @@ export class HeaderTable {
 
   render(banner) {
     const nav = this.#navigation();
+    const organizations = this.#organizations();
     const rows = this.#launcherRows();
 
     // Everything set small. This is the index, not the page: it should be
     // legible and stay out of the way of the first thing anyone actually reads.
     return `<table width="100%">
-<tr><td align="center">${banner}${nav ? `<br><sub>${nav}</sub>` : ""}</td></tr>
+<tr><td align="center">${banner}${nav ? `<br><sub>${nav}</sub>` : ""}${organizations ? `<br><sub>${organizations}</sub>` : ""}</td></tr>
 ${rows.map((r) => `<tr><td align="right"><sub>${r}</sub></td></tr>`).join("\n")}
 </table>`;
   }
@@ -51,6 +52,15 @@ ${rows.map((r) => `<tr><td align="right"><sub>${r}</sub></td></tr>`).join("\n")}
     return this.profile.nav.sections
       .map((s) => `<a href="${this.links.page(s.to)}">${escapeXml(s.label)}</a>`)
       .join(" · ");
+  }
+
+  #organizations() {
+    const organizations = this.profile.nav.organizations;
+    if (!organizations?.path?.length) return "";
+    const path = organizations.path
+      .map((org) => `<a href="${org.url}">${escapeXml(org.name)}</a>`)
+      .join(" / ");
+    return `<strong>${escapeXml(organizations.label)}</strong> · ${path}`;
   }
 
   #launcherRows() {
