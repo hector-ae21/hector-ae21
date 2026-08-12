@@ -15,27 +15,27 @@
 </style>
 
 <g class="rise" style="--d:0.00s">
-<text x="109.2" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">14</text>
+<text x="109.2" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">22</text>
 <text x="109.2" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#818b98" text-anchor="middle">REPOSITORIES</text>
 </g>
 <line x1="214.4" y1="24" x2="214.4" y2="62" stroke="#e4e8ed" stroke-width="1"/>
 <g class="rise" style="--d:0.07s">
-<text x="319.6" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">2</text>
+<text x="319.6" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">4</text>
 <text x="319.6" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#818b98" text-anchor="middle">ORGANISATIONS</text>
 </g>
 <line x1="424.8" y1="24" x2="424.8" y2="62" stroke="#e4e8ed" stroke-width="1"/>
 <g class="rise" style="--d:0.14s">
-<text x="530" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">104</text>
+<text x="530" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">84</text>
 <text x="530" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#818b98" text-anchor="middle">MERGED PULL REQUESTS</text>
 </g>
 <line x1="635.2" y1="24" x2="635.2" y2="62" stroke="#e4e8ed" stroke-width="1"/>
 <g class="rise" style="--d:0.21s">
-<text x="740.4000000000001" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">212</text>
+<text x="740.4000000000001" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">233</text>
 <text x="740.4000000000001" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#818b98" text-anchor="middle">MY COMMITS · 12 MO</text>
 </g>
 <line x1="845.6" y1="24" x2="845.6" y2="62" stroke="#e4e8ed" stroke-width="1"/>
 <g class="rise" style="--d:0.28s">
-<text x="950.8000000000001" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">332</text>
+<text x="950.8000000000001" y="50" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" font-weight="700" fill="#1f2328" text-anchor="middle">512</text>
 <text x="950.8000000000001" y="72" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="10" font-weight="600" fill="#818b98" text-anchor="middle">MY COMMITS · TOTAL</text>
 </g>
 </svg>
