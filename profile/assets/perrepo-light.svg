@@ -23,14 +23,14 @@
 <rect x="239" y="62" width="219" height="11" rx="5" fill="#e4e8ed"/>
 <rect class="bar" style="--d:0.07s" x="239" y="62" width="175.2" height="11" rx="5" fill="#0969da"/>
 <g class="fade" style="--d:0.07s"><text x="520" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">100</text></g>
-<text x="0" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">funiber-edtech/moodle-theme_digitalta</text>
+<text x="0" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">octoform</text>
 <rect x="239" y="90" width="219" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.14s" x="239" y="90" width="71.8" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.14s"><text x="520" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">41</text></g>
-<text x="0" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">octoform</text>
+<rect class="bar" style="--d:0.14s" x="239" y="90" width="120.9" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.14s"><text x="520" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">69</text></g>
+<text x="0" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">funiber-edtech/moodle-theme_digitalta</text>
 <rect x="239" y="118" width="219" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.21s" x="239" y="118" width="70.1" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.21s"><text x="520" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">40</text></g>
+<rect class="bar" style="--d:0.21s" x="239" y="118" width="71.8" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.21s"><text x="520" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">41</text></g>
 <text x="0" y="155.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">http-response-client</text>
 <rect x="239" y="146" width="219" height="11" rx="5" fill="#e4e8ed"/>
 <rect class="bar" style="--d:0.28s" x="239" y="146" width="64.8" height="11" rx="5" fill="#0969da"/>
@@ -49,8 +49,8 @@
 <g class="fade" style="--d:0.49s"><text x="520" y="239.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">25</text></g>
 <text x="0" y="267.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">octoform-docs</text>
 <rect x="239" y="258" width="219" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.56s" x="239" y="258" width="35.0" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.56s"><text x="520" y="267.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">20</text></g>
+<rect class="bar" style="--d:0.56s" x="239" y="258" width="40.3" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.56s"><text x="520" y="267.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">23</text></g>
 <text x="0" y="295.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">Other</text>
 <rect x="239" y="286" width="219" height="11" rx="5" fill="#e4e8ed"/>
 <rect class="bar" style="--d:0.63s" x="239" y="286" width="219.0" height="11" rx="5" fill="#0969da"/>
