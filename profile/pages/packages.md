@@ -1,7 +1,7 @@
 <!--
   GENERATED FILE — DO NOT EDIT.
   Rendered from profile/data/content.json + the GitHub API by
-  scripts/generate-profile.mjs. Last generated: 2026-08-20
+  scripts/generate-profile.mjs. Last generated: 2026-08-21
 -->
 
 # Packages
