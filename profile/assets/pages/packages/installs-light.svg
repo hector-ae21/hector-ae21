@@ -18,18 +18,18 @@
 <text x="0" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">@resilientmq/core</text>
 <rect x="360" y="34" width="573" height="11" rx="5" fill="#e4e8ed"/>
 <rect class="bar" style="--d:0.00s" x="360" y="34" width="573.0" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.00s"><text x="1060" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">833</text></g>
+<g class="fade" style="--d:0.00s"><text x="1060" y="43.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">853</text></g>
 <text x="0" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">@resilientmq/mongoose-connector</text>
 <rect x="360" y="62" width="573" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.07s" x="360" y="62" width="381.8" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.07s"><text x="1060" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">555</text></g>
+<rect class="bar" style="--d:0.07s" x="360" y="62" width="376.2" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.07s"><text x="1060" y="71.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">560</text></g>
 <text x="0" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">@didactika/prisma-autoread</text>
 <rect x="360" y="90" width="573" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.14s" x="360" y="90" width="114.2" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.14s"><text x="1060" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">166</text></g>
+<rect class="bar" style="--d:0.14s" x="360" y="90" width="120.2" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.14s"><text x="1060" y="99.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">179</text></g>
 <text x="0" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#1f2328" text-anchor="start">http-response-client</text>
 <rect x="360" y="118" width="573" height="11" rx="5" fill="#e4e8ed"/>
-<rect class="bar" style="--d:0.21s" x="360" y="118" width="78.4" height="11" rx="5" fill="#0969da"/>
-<g class="fade" style="--d:0.21s"><text x="1060" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">114</text></g>
+<rect class="bar" style="--d:0.21s" x="360" y="118" width="86.0" height="11" rx="5" fill="#0969da"/>
+<g class="fade" style="--d:0.21s"><text x="1060" y="127.5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif" font-size="11" font-weight="400" fill="#59636e" text-anchor="end">128</text></g>
 </g>
 </svg>
